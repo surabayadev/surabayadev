@@ -1,9 +1,68 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+.jumbotron-main {
+	padding-top: 120px;
+	padding-bottom: 120px;
+	margin-bottom: 0px;
+}
+
+.feature {
+	.jumbotron {
+		padding-top: 0px;
+		background: transparent;
+	}
+
+	padding-top: 80px;
+	padding-bottom: 120px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+
+.list-group.list-group-box {
+	.list-group-item {
+		margin-bottom: 30px;
+
+		.list-group-item-heading {
+			margin-bottom: 15px;
+		}
+	}
+}
+
+
+.circle {
+	.circle-item {
+
+	}
+}
+
+
+.media.testimony {
+	padding: 20px 10px;
+	border: 1px solid #d1d5da;
+	border-radius: 4px;
+    box-shadow: 0 1px 15px rgba(27,31,35,0.15);
+
+    .media-heading {
+    	margin-bottom: 10px;
+    }
+
+    img {
+    	width: 90px;
+    	height: 90px;
+    }
+}
+
+
+.footer {
+	padding: 60px 0px;
+}

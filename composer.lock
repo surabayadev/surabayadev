@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "antoniputra/ngeblog",
-            "version": "v1.1.0",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antoniputra/ngeblog.git",
-                "reference": "58ec95960373e36841badfc3f48e25729ac540a9"
+                "reference": "8febc938f266e4903de1ff54e36edbff900cbe59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antoniputra/ngeblog/zipball/58ec95960373e36841badfc3f48e25729ac540a9",
-                "reference": "58ec95960373e36841badfc3f48e25729ac540a9",
+                "url": "https://api.github.com/repos/antoniputra/ngeblog/zipball/8febc938f266e4903de1ff54e36edbff900cbe59",
+                "reference": "8febc938f266e4903de1ff54e36edbff900cbe59",
                 "shasum": ""
             },
             "require": {
@@ -65,7 +65,7 @@
                 "blog",
                 "laravel"
             ],
-            "time": "2017-12-04T05:19:14+00:00"
+            "time": "2017-12-06T05:55:52+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
