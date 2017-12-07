@@ -9,6 +9,11 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+.custom-jumbotron{
+	background:url('/../img/codelines.svg'),#fff;
+    background-position: center 10%;
+    background-size: cover;	
+}
 
 .jumbotron-main {
 	padding-top: 120px;
@@ -60,6 +65,14 @@
     	width: 90px;
     	height: 90px;
     }
+}
+
+.well { 
+	box-shadow: none
+}
+
+.navbar-brand {
+	padding:5px 15px;
 }
 
 

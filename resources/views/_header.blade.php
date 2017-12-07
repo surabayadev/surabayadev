@@ -1,20 +1,18 @@
 <nav class="navbar navbar-default" style="margin-bottom: 0px;">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">
-				<img alt="Brand" src="{{ asset('img/logo-medium.png') }}" style="height: 100%;">
+			<a class="navbar-brand" href="{{ url('/') }}">
+				<img alt="Brand" src="{{ asset('img/logo-horizontal.png') }}" style="height: 100%;">
 			</a>
 		</div>
 	</div>
 </nav>
 
-<div class="jumbotron jumbotron-main">
+<div class="jumbotron jumbotron-main custom-jumbotron">
 	<div class="container">
 		<div class="col-md-7">
-			<h1 style="font-size: 72px;">Surabaya Dev</h1>
-			{{-- <img alt="Brand" src="{{ asset('img/logo-medium.png') }}">
-			<br/><br/> --}}
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem vel veniam, dignissimos ut magni, natus facere iusto, ipsa hic possimus quos sequi ipsam unde aut provident, nostrum aspernatur asperiores reprehenderit.</p>
+			<h1 style="font-size: 72px;">#SurabayaDev</h1>
+			<p class="lead"><b>SurabayaDev</b> adalah komunitas IT yang membantu meningkatkan dan memanfaatkan potensi pegiat IT di seluruh Indonesia khususnya di kota Surabaya dalam bidang Teknologi, guna mendukung, untuk mewujudkan suatu kondisi yang saling melengkapi dalam rangka peningkatan keahlian, dan semangat kerjasama.</p>
 		</div>
 		<div class="col-md-5" style="padding-left: 42px; padding-right: 42px;">
 			<div class="well">
