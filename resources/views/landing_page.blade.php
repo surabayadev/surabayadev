@@ -30,7 +30,23 @@
 						</div>
 					</div>
 				@else
-					<div class="form-cta-top well hidden-xs">
+					<div class="form-cta-top well text-center">
+						{{-- <i class="text-info"></i> --}}
+						<p class="text-info" style="font-size: 14px;">
+							Upcoming Event <br/>
+							Jum'at, 15 Desember 2017
+						</p>
+						<h2>
+							KupasTuntas BitCoin
+							<p><small>The BitCoin Core Project Explained</small></p>
+						</h2>
+
+						<hr/>
+
+						<a href="{{ route('event') }}" class="btn btn-success btn-block">Join Event</a>
+					</div>
+
+					{{-- <div class="form-cta-top well hidden-xs">
 						{!! Form::open(['method' => 'POST', 'url' => route('register')]) !!}
 							<div class="form-group">
 								{!! Form::label('username', 'Username') !!}
@@ -52,11 +68,11 @@
 								</button>
 							</div>
 						{!! Form::close() !!}
-					</div>
+					</div> --}}
 				@endif
 
 				@if (!auth()->check())
-					<a href="{{ route('register') }}" class="btn btn-success btn-lg visible-xs">Support SurabayaDev</a>
+					{{-- <a href="{{ route('register') }}" class="btn btn-success btn-lg visible-xs">Support SurabayaDev</a> --}}
 				@endif
 			</div>
 		</div>
@@ -285,24 +301,29 @@
 	</div>
 
 
-	<div class="feature hidden-xs">
+	<div class="feature">
 		<div class="container text-center">
 			<h3>Thanks to Generous support</h3> <br/><br/>
 
 			<div class="row">
-				<div class="col-xs-6 col-md-4">
+				<div class="col-xs-6 col-md-3">
 					<a href="#">
-						<img src="{{ asset('img/niagahoster.webp') }}" alt="...">
+						<img src="{{ asset('img/sponsor_niagahoster.jpg') }}" alt="Niaga Hoster" style="width: 100%;">
 					</a>
 				</div>
-				<div class="col-xs-6 col-md-4">
+				<div class="col-xs-6 col-md-3">
 					<a href="#">
-						<img src="{{ asset('img/niagahoster.webp') }}" alt="...">
+						<img src="{{ asset('img/sponsor_dilo.jpg') }}" alt="Telkom Dilo" style="width: 100%;">
 					</a>
 				</div>
-				<div class="col-xs-6 col-md-4">
+				<div class="col-xs-6 col-md-3">
 					<a href="#">
-						<img src="{{ asset('img/niagahoster.webp') }}" alt="...">
+						<img src="{{ asset('img/sponsor_jetbrains.jpg') }}" alt="Jetbrains" style="width: 100%;">
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<a href="#">
+						<img src="{{ asset('img/sponsor_indigo.jpg') }}" alt="Indigo" style="width: 100%;">
 					</a>
 				</div>
 			</div>
@@ -317,7 +338,7 @@
 				<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est repellat sunt sit neque, ipsum placeat aut consequatur, quis ea sint qui, necessitatibus non recusandae, fuga pariatur sequi quaerat minima mollitia.</p>
 			</div>
 
-			@if (!auth()->check())
+			{{-- @if (!auth()->check())
 				{!! Form::open(['method' => 'POST', 'url' => route('register')]) !!}
 					<div class="row">
 						<div class="col-md-3">
@@ -342,7 +363,7 @@
 						</div>
 					</div>
 				{!! Form::close() !!}
-			@endif
+			@endif --}}
 		</div>
 	</div>
 @endsection

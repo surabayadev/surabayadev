@@ -15,14 +15,14 @@ Route::get('/', function () {
     return view('landing_page');
 });
 
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('resend-email', 'Auth\RegisterController@resendEmail')->name('resendEmail');
-Auth::routes();
+// Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+// Route::get('resend-email', 'Auth\RegisterController@resendEmail')->name('resendEmail');
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/events', function () {
-    return view('misc.coming_soon');
+    return view('event');
 })->name('event');
 
 Route::get('/members', function () {
