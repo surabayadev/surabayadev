@@ -12,16 +12,28 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div id="app">
 
-		@include('_header')
+        @if (auth()->user() && !auth()->user()['is_confirmed'])
+            @include('partials.alert_confirmation')
+        @endif
 
-		@yield('content')
+        @include('partials.header')
+
+        @yield('content')
+
+		@include('partials.footer')
     </div>
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
+    <script>
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
 </body>
 </html>

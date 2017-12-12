@@ -1,0 +1,79 @@
+// for mini mobile phone (e.g: iphone 5)
+@media (max-width: $screen-xs-max) {
+	.jumbotron-main {
+		padding-top: 40px;
+		padding-bottom: 40px;
+		// margin-bottom: 0px;
+		text-align: center;
+
+		.main-title {
+			font-size: 38px;
+		}
+
+		p.lead {
+			text-align: center !important;
+			font-size: 20px;
+		}
+
+		.cta-top-wrapper {
+
+		}
+	}
+
+	.thumbnail-profile {
+		padding: 0px;
+	}
+
+
+	.feature {
+		padding-top: 30px;
+    	padding-bottom: 50px;
+
+    	h2 {
+			font-size: 36px;
+			font-weight: 300;
+		}
+	}
+
+
+	.feature.feature-details {
+		// 
+	}
+
+
+	.feature.feature-stats {
+		.circle {
+			transform: scale(0.8);
+		}
+	}
+}
+
+// Small devices (tablets, 768px and up)
+@media (min-width: $screen-xs-min) and (max-width: $screen-sm-max) {
+	.circle {
+		.circle-item {
+			&:nth-child(1) {
+				left: 110px;
+			}
+
+			&:nth-child(2) {
+				left: 250px;
+			}
+
+			&:nth-child(3) {
+				left: 300px;
+			}
+		}
+	}
+}
+
+
+// responsive to all device under desktop
+@media (max-width: $screen-sm-max) {
+	.tiles {
+		li {
+			border-width: 0px;
+			width: 50%;
+		}
+	}
+}
