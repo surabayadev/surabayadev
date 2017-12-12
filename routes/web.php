@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('landing_page');
 });
 
-// Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 // Route::get('resend-email', 'Auth\RegisterController@resendEmail')->name('resendEmail');
 // Auth::routes();
 
