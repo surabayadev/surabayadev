@@ -17,9 +17,9 @@
 <body>
     <div id="app">
 
-        @if (auth()->user() && !auth()->user()['is_confirmed'])
+        {{-- @if (auth()->user() && !auth()->user()['is_confirmed'])
             @include('partials.alert_confirmation')
-        @endif
+        @endif --}}
 
         @include('partials.header')
 
