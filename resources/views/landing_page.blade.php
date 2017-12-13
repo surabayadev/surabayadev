@@ -81,8 +81,8 @@
 	<div class="feature feature-details">
 		<div class="container">
 			<div class="jumbotron text-center">
-				<h2>A better way to learn together</h2>
-				<p class="lead">SurabayaDev brings developers together to learn through problems, move ideas forward, and learn from each other along the way.</p>
+				<h2>Cara yang lebih baik untuk belajar bersama</h2>
+				<p class="lead">SurabayaDev membawa <u>Developer</u> bersama untuk belajar melalui masalah, menggerakkan gagasan ke depan, dan belajar dari satu sama lain.</p>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -92,14 +92,14 @@
 					<div class="list-group list-group-box">
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">Write better code</h4>
-							<p class="list-group-item-text">Collaboration makes perfect. The conversations and code reviews that happen in Pull Requests help your team share the weight of your work and improve the software you build..</p>
+							<p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus earum vitae autem sed ex, odit, unde adipisci temporibus quam animi, officiis rerum! Hic quos quod harum enim voluptatem, tenetur itaque!</p>
 						</a>
 						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">Manage your chaos</h4>
+							<h4 class="list-group-item-heading">Write better code</h4>
 							<p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos possimus nesciunt dicta, similique omnis doloribus facilis esse commodi ab quibusdam, a reprehenderit eligendi placeat ad, sit unde odit, est quas.</p>
 						</a>
 						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">Find the right tools</h4>
+							<h4 class="list-group-item-heading">Write better code</h4>
 							<p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, saepe. Temporibus autem atque recusandae voluptatibus quisquam delectus nemo neque perferendis vitae facilis mollitia commodi nam nostrum quae expedita, ea ipsum.</p>
 						</a>
 						{{-- <a href="#" class="list-group-item">
@@ -336,6 +336,9 @@
 		<div class="container">
 			<div class="jumbotron text-center">
 				<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est repellat sunt sit neque, ipsum placeat aut consequatur, quis ea sint qui, necessitatibus non recusandae, fuga pariatur sequi quaerat minima mollitia.</p>
+
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
 			</div>
 
 			{{-- @if (!auth()->check())
