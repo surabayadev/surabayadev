@@ -34,11 +34,11 @@
 						{{-- <i class="text-info"></i> --}}
 						<p class="text-info" style="font-size: 14px;">
 							Upcoming Event <br/>
-							Jum'at, 15 Desember 2017
+							Jum'at, 10 August 2018
 						</p>
 						<h2>
-							KupasTuntas BitCoin
-							<p><small>The BitCoin Core Project Explained</small></p>
+							"The Ideal Design Workflow" - MeetUp #SurabayaDev
+							{{-- <p><small>The BitCoin Core Project Explained</small></p> --}}
 						</h2>
 
 						<hr/>
@@ -157,7 +157,7 @@
 							<h4>Laravel</h4>
 						</li>
 						<li>
-							<img src="https://scontent-sit4-1.xx.fbcdn.net/v/t39.2365-6/11057038_1603675009889853_2020621244_n.png?_nc_eui2=v1%3AAeHChmRoezBCoqx9Hhbty72GGvFXQLWKQkag3rnwEvDONaE4tFxVPPzHFsAmtjxtvmfFWfguSLTOB7t8wmRf-rB7h8YfK6-vKkUoSjezQfu8aw&oh=eabcb1f30a4a8ffd0927950734e27df9&oe=5AC8000B" data-toggle="tooltip" data-placement="bottom" title="React">
+							<img src="{{ asset('img/react.png') }}" data-toggle="tooltip" data-placement="bottom" title="React">
 							<h4>React</h4>
 						</li>
 						<li>
@@ -202,13 +202,13 @@
 					<div class="media testimony">
 						<div class="media-left">
 							<a href="#">
-								<img class="media-object img-circle" src="https://avatars0.githubusercontent.com/u/3622084?s=460&v=4">
+								<img class="media-object img-circle" src="{{ asset('img/dummy-avatar.png') }}">
 							</a>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<div>Antoni Putra</div>
-								<small>Suami Idaman</small>
+								<div>John Doe</div>
+								<small>Engineer Sakti</small>
 							</h4>
 							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo, Cras purus odio.
 						</div>
@@ -218,13 +218,13 @@
 					<div class="media testimony">
 						<div class="media-left">
 							<a href="#">
-								<img class="media-object img-circle" src="https://avatars0.githubusercontent.com/u/3622084?s=460&v=4">
+								<img class="media-object img-circle" src="{{ asset('img/dummy-avatar.png') }}">
 							</a>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<div>Antoni Putra</div>
-								<small>Suami Idaman</small>
+								<div>John Doe</div>
+								<small>Engineer Sakti</small>
 							</h4>
 							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo, Cras purus odio.
 						</div>
@@ -234,13 +234,13 @@
 					<div class="media testimony">
 						<div class="media-left">
 							<a href="#">
-								<img class="media-object img-circle" src="https://avatars0.githubusercontent.com/u/3622084?s=460&v=4">
+								<img class="media-object img-circle" src="{{ asset('img/dummy-avatar.png') }}">
 							</a>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<div>Antoni Putra</div>
-								<small>Suami Idaman</small>
+								<div>John Doe</div>
+								<small>Engineer Sakti</small>
 							</h4>
 							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo, Cras purus odio.
 						</div>
@@ -252,13 +252,13 @@
 					<div class="media testimony">
 						<div class="media-left">
 							<a href="#">
-								<img class="media-object img-circle" src="https://avatars0.githubusercontent.com/u/3622084?s=460&v=4">
+								<img class="media-object img-circle" src="{{ asset('img/dummy-avatar.png') }}">
 							</a>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<div>Antoni Putra</div>
-								<small>Suami Idaman</small>
+								<div>John Doe</div>
+								<small>Engineer Sakti</small>
 							</h4>
 							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo, Cras purus odio.
 						</div>
@@ -268,13 +268,13 @@
 					<div class="media testimony">
 						<div class="media-left">
 							<a href="#">
-								<img class="media-object img-circle" src="https://avatars0.githubusercontent.com/u/3622084?s=460&v=4">
+								<img class="media-object img-circle" src="{{ asset('img/dummy-avatar.png') }}">
 							</a>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<div>Antoni Putra</div>
-								<small>Suami Idaman</small>
+								<div>John Doe</div>
+								<small>Engineer Sakti</small>
 							</h4>
 							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo, Cras purus odio.
 						</div>
@@ -284,13 +284,13 @@
 					<div class="media testimony">
 						<div class="media-left">
 							<a href="#">
-								<img class="media-object img-circle" src="https://avatars0.githubusercontent.com/u/3622084?s=460&v=4">
+								<img class="media-object img-circle" src="{{ asset('img/dummy-avatar.png') }}">
 							</a>
 						</div>
 						<div class="media-body">
 							<h4 class="media-heading">
-								<div>Antoni Putra</div>
-								<small>Suami Idaman</small>
+								<div>John Doe</div>
+								<small>Engineer Sakti</small>
 							</h4>
 							Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo, Cras purus odio.
 						</div>
