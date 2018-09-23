@@ -33,11 +33,12 @@
 					<div class="form-cta-top well text-center">
 						{{-- <i class="text-info"></i> --}}
 						<p class="text-info" style="font-size: 14px;">
-							Upcoming Event <br/>
-							Jum'at, 10 August 2018
+							Event yang akan datang <br/>
+							Minggu, 30 September 2018
 						</p>
 						<h2>
-							"The Ideal Design Workflow" - MeetUp #SurabayaDev
+							"How to be a Web Developer &amp; Refactoring to Collection"
+							{{-- "The Ideal Design Workflow" - MeetUp #SurabayaDev --}}
 							{{-- <p><small>The BitCoin Core Project Explained</small></p> --}}
 						</h2>
 
