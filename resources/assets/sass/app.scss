@@ -1,12 +1,16 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'landingpage';
 
 .navbar-laravel {
   background-color: #fff;

@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	\Debugbar::disable();
+    return view('theme::landingpage');
 });
 
 Auth::routes();
