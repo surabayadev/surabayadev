@@ -41,7 +41,12 @@ Route::get('/preorder/kaos', function () {
 });
 
 Route::get('/preorder/paketkaos', function () {
-	$gform = 'https://docs.google.com/forms/d/e/1FAIpQLSfVeCBe5CLqZWGn6vz6JMgY_iWjvLRgnhJ_RO9l64DG657HZg/viewform';
+    $gform = 'https://docs.google.com/forms/d/e/1FAIpQLSfVeCBe5CLqZWGn6vz6JMgY_iWjvLRgnhJ_RO9l64DG657HZg/viewform';
+    return view('preorder', compact('gform'));
+});
+
+Route::get('/preorder/mug', function () {
+	$gform = 'https://docs.google.com/forms/d/e/1FAIpQLSf-OM9GIANW2lxvdOh7wpzcestTXEAjWdh9Pk59cHRmmpWLpA/viewform';
     return view('preorder', compact('gform'));
 });
 

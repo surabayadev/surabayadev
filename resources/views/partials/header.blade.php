@@ -15,6 +15,18 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="{{ route('event') }}">Events</a></li>
+				<li>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="label label-success" style="position: relative; top: -10px;">new</span> Official Merchandise <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+            			<li><a href="{{ url('/preorder/polo') }}">Polo</a></li>
+            			<li><a href="{{ url('/preorder/paketpolo') }}">Paket Polo</a></li>
+            			<li role="separator" class="divider"></li>
+            			<li><a href="{{ url('/preorder/kaos') }}">Kaos</a></li>
+            			<li><a href="{{ url('/preorder/paketkaos') }}">Paket Kaos</a></li>
+            			<li role="separator" class="divider"></li>
+            			<li><a href="{{ url('/preorder/mug') }}">Paket Mug</a></li>
+        			</ul>
+				</li>
 				{{-- <li><a href="{{ route('member') }}">Anggota</a></li> --}}
 			</ul>
 
