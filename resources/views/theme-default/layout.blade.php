@@ -16,6 +16,8 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+    @yield('styles')
+
     {{-- Google Analytics --}}
     {{-- <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GA') }}"></script>
     <script>
@@ -30,10 +32,14 @@
     <div id="app">
         @include('theme::partials.header')
 
-        @yield('content')
+        <div style="margin-top: 66px;">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+
+    @yield('scripts')
 </body>
 </html>

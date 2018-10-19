@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg sby-navbar navbar-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">
       <img src="{{ asset('img/logo-horizontal.png') }}" style="height: 40px;" alt="SurabayaDev Logo">
@@ -34,24 +34,3 @@
     </div>
   </div>
 </nav>
-
-<div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="{{ asset('img/foto-bersama-1.jpg') }}" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="{{ asset('img/surabayadev-family.jpg') }}" alt="Second slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-<br/><br/>

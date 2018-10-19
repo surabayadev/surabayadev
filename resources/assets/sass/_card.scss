@@ -1,0 +1,18 @@
+.sby-card.featured {
+	.sby-card-image, .sby-card-body {
+		display: inline-block;
+	}
+
+	.sby-card-image {
+		width: 50%;
+
+		> img {
+			max-width: 100%;
+			height: 120px;
+		}
+	}
+
+	.sby-card-body {
+		width: 50%;
+	}
+}

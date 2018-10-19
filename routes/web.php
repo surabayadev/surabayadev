@@ -12,8 +12,15 @@
 */
 
 Route::get('/', function () {
-	\Debugbar::disable();
-    return view('theme::landingpage');
+    \Debugbar::disable();
+    $banners = [
+        asset('storage/meetup-uinsa.jpg'),
+        asset('storage/meetup-ideal-design.jpg'),
+        asset('img/foto-bersama-1.jpg'),
+        asset('img/surabayadev-family.jpg'),
+    ];
+
+    return view('theme::landingpage', compact('banners'));
 });
 
 Auth::routes();

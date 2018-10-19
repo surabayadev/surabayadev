@@ -1,0 +1,16 @@
+.sby-navbar {
+	background-color: #fff;
+	font-size: 17px;
+
+	&.navbar-expand-lg .navbar-nav {
+		.active .nav-link {
+			color: rgba(0, 40, 0, 0.9);
+		}
+
+		.nav-link {
+		    padding-right: 1rem;
+		    padding-left: 1rem;
+		    color: rgba(0, 40, 0, 0.5);
+		}
+	}
+}
