@@ -34,10 +34,10 @@
 						{{-- <i class="text-info"></i> --}}
 						<p class="text-info" style="font-size: 14px;">
 							Event yang akan datang <br/>
-							Kamis, 18 Oktober 2018
+							Jumat, 30 November 2018
 						</p>
 						<h2>
-							"How to write a news article and Search Engine Optimization (SEO)" - MeetUp #SurabayaDev Oktober 2018
+							"Introducting To Vue JS" - MeetUp #SurabayaDev November 2018
 							{{-- "The Ideal Design Workflow" - MeetUp #SurabayaDev --}}
 							{{-- <p><small>The BitCoin Core Project Explained</small></p> --}}
 						</h2>
