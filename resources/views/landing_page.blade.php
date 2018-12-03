@@ -34,12 +34,10 @@
 						{{-- <i class="text-info"></i> --}}
 						<p class="text-info" style="font-size: 14px;">
 							Event yang akan datang <br/>
-							Jumat, 30 November 2018
+							Sabtu, 8 Desember 2018
 						</p>
 						<h2>
-							"Introducting To Vue JS" - MeetUp #SurabayaDev November 2018
-							{{-- "The Ideal Design Workflow" - MeetUp #SurabayaDev --}}
-							{{-- <p><small>The BitCoin Core Project Explained</small></p> --}}
+							"Golang Starter" MeetUp #SurabayaDev Desember 2018
 						</h2>
 
 						<hr/>
