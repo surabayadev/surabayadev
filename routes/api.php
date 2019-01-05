@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\v1\BlogController;
+use App\Http\Controllers\Api\v1\EventController;
 use Illuminate\Http\Request;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('event', 'EventController');
+Route::resource('blog', 'BlogController');
