@@ -6,7 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 
-abstract class BaseApiController extends Controller
+abstract class BaseApiControllerxxx extends Controller
 {
     use DispatchesJobs, ValidatesRequests;
 }
