@@ -16,12 +16,14 @@ class UserSeeder extends Seeder
             [
                 'role_id' => 1,
                 'name' => 'SurabayaDev Admin',
+                'username' => 'surabayadev',
                 'email' => 'surabayadev@gmail.com',
                 'password' => bcrypt(env('PASS_ADMIN', 'secret')),
             ],
             [
                 'role_id' => 2,
                 'name' => 'Arek Tampan',
+                'username' => 'tampan',
                 'email' => 'arektampan@gmail.com',
                 'password' => bcrypt('secret'),
             ],
