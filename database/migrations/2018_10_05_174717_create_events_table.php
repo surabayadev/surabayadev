@@ -17,10 +17,12 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('name');
+            $table->string('pemateri');
             $table->string('slug')->unique();
             $table->string('cover');
             $table->text('description');
             $table->text('content');
+            $table->date('tanggal');
             $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
