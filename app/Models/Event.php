@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\EventParticipant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -15,6 +16,11 @@ class Event extends Model
     public function user()
     {
     	return $this->belongsTo(User::class);
+    }
+
+    public function participant()
+    {
+    	return $this->hasMany(EventParticipant::class);
     }
 
     public function FunctionName($value='') {

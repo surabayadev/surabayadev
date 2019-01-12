@@ -15,7 +15,8 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->references('id')->on('users')
+                                    ->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('pemateri');
             $table->string('slug')->unique();

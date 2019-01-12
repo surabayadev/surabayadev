@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Event;
 use Illuminate\Database\Seeder;
+use App\Models\EventParticipant;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,12 +18,14 @@ class DatabaseSeeder extends Seeder
         Role::truncate();
         User::truncate();
         Event::truncate();
+        EventParticipant::truncate();
 
         $this->call(
             [
                 RoleSeeder::class,
                 UserSeeder::class,
-                EventSeeder::class
+                EventSeeder::class,
+                ParticipantSeeder::class
             ]
         );
     }
