@@ -14,7 +14,7 @@ class ParticipantSeeder extends Seeder
     {
         $data = [
             [
-                'id_event' => 1,
+                'event_id' => 1,
                 'email' => 'nadhif@gmail.com',
                 'nama_lengkap' => 'Nadhif',
                 'notelp' => '085646742960',
@@ -24,7 +24,7 @@ class ParticipantSeeder extends Seeder
                 'sumber_info' => 'Instagram'     
             ],
             [
-                'id_event' => 1,
+                'event_id' => 1,
                 'email' => 'aliwildan@gmail.com',
                 'nama_lengkap' => 'Ali wildan',
                 'notelp' => '085746744530',

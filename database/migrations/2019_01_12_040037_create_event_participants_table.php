@@ -15,7 +15,7 @@ class CreateEventParticipantsTable extends Migration
     {
         Schema::create('event_participants', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('id_event')->references('id')
+            $table->unsignedInteger('event_id')->references('id')
                                 ->on('events')->onUpdate('cascade')->onDelete('cascade');
             $table->string('email')->nullable();
             $table->string('nama_lengkap')->nullable();

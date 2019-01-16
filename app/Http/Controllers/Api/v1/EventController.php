@@ -25,7 +25,7 @@ class EventController extends BaseApiController
      */
     public function index()
     {
-        $events = Event::with('user')->orderBy('id','desc')->get();
+        $events = Event::orderBy('id','desc')->get();
         return response()->json([
             'event' => $events
         ]);

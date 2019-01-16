@@ -20,8 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('event', 'EventController');
-// Route::post('event/buat', 'EventController@store');
-
-// Route::get('event', 'EventController@index');
-
+Route::resource('participant', 'ParticipantController');
+Route::post('participant/{slug}/create', 'ParticipantController@store');
+Route::get('all_participant/{slug}', 'ParticipantController@pesertaEvent');
 Route::resource('blog', 'BlogController');
