@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogsTable extends Migration
+class CreateKategoriBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('kategori_blogs', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->references('id')->on('users')
-                                    ->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedInteger('category_id')->references('id')->on('kategori_blogs')
-                                    ->onUpdate('cascade')->onDelete('cascade');;
+            ->onUpdate('cascade')->onDelete('cascade');;
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('image');
-            $table->text('content');
-            $table->tinyInteger('status')->default(0);
-            $table->string('editor_type');
-            $table->softDeletes();
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -37,6 +31,6 @@ class CreateBlogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('kategori_blogs');
     }
 }
