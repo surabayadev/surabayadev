@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
-            $table->boolean('is_admin')->default(0);
             $table->boolean('is_active')->default(0);
             $table->tinyInteger('status')->default(0);
+            $table->string('job')->nullable();
             $table->string('province')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
@@ -33,6 +33,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

@@ -17,7 +17,14 @@ class RoleSeeder extends Seeder
             [
                 'name' => 'admin',
                 'display_name' => 'Admin',
-                'description' => 'Role Admin',
+                'description' => 'Admin role',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'editor',
+                'display_name' => 'Editor',
+                'description' => 'Editor role',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

@@ -10,14 +10,14 @@ class Event extends Model
 {
 	use SoftDeletes;
 
-    protected $fillable = ['user_id', 'name', 'slug', 'cover', 'description', 'content'];
+    const STATUS_HIDE = 0;
+
+    const STATUS_PUBLISH = 1;
+
+    protected $fillable = ['user_id', 'name', 'slug', 'cover', 'description', 'content', 'status', 'participant_limit'];
 
     public function user()
     {
     	return $this->belongsTo(User::class);
-    }
-
-    public function FunctionName($value='') {
-        // code...
     }
 }
