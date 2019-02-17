@@ -34,10 +34,10 @@
 						{{-- <i class="text-info"></i> --}}
 						<p class="text-info" style="font-size: 14px;">
 							Event yang akan datang <br/>
-							Sabtu, 8 Desember 2018
+							Sabtu, 24 Februari 2019
 						</p>
 						<h2>
-							"Golang Starter" MeetUp #SurabayaDev Desember 2018
+							Speed Up <b>Vue.js</b> Development with <b>Nuxt.js</b>
 						</h2>
 
 						<hr/>
