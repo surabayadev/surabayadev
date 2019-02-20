@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Http\Middleware\newMiddleware;
 use App\Models\KategoriBlog;
@@ -41,7 +42,7 @@ class BlogController extends BaseApiController
             'content'  => 'required',
             'editor_type' => 'required'
         ]);
-        $category = KategoriBlogg::all();
+        $category = KategoriBlog::all();
         $blog = new Blog();
             if (auth()->check()) {
                 $blog->user_id = auth()->user()->id;

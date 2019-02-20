@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\KategoriBlog;
 use App\Http\Controllers\Api\v1\BaseApiController;
 
