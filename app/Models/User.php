@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Event;
+use App\Models\Blog;
 use App\Models\Role;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -34,7 +35,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class);
     }
-
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
     public function role()
     {
         return $this->hasOne(Role::class);
