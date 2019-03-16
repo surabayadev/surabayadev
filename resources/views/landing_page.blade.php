@@ -37,7 +37,7 @@
 							Sabtu, 24 Februari 2019
 						</p>
 						<h2>
-							Speed Up <b>Vue.js</b> Development with <b>Nuxt.js</b>
+							"Getting Started With <b>Flutter</b>" - MeetUp #SurabayaDev Maret 2019
 						</h2>
 
 						<hr/>
