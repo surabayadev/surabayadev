@@ -1,0 +1,163 @@
+body{
+	overflow-x: hidden;
+}
+.navbar{
+	background-color: #fff;
+	padding: 3px;
+	border-color: white;
+}
+
+.navbar .navbar-brand {
+	padding: 20px;
+	padding-top:0px;
+}
+
+.container-fluid {
+	padding: 50px 50px;
+	padding-top: 60px;
+    padding-right: 50px;
+    padding-bottom: 100px;
+    padding-left: 50px;
+}
+
+h2 {
+	padding-bottom: 150px;
+	margin-left: 300px;
+	margin-bottom:10px;
+	margin-right: -200px;
+}
+
+.buttonhome {
+	padding-bottom: 50px;
+	margin-left: 250px;
+	margin-bottom:10px;
+	margin-right: -200px;
+}
+
+.btn-default1 {
+	border-radius: 15px;
+	color:#fff;
+	background-color:transparent;
+	border-color:#fff;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #17d814;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  margin-left: 540px;
+  margin-top: 30px;
+  margin-bottom:70px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.w3-animate-bottom{position:relative;animation:animatebottom 3s}@keyframes animatebottom{from{bottom:-300px;opacity:0} to{bottom:0;opacity:1}}
+
+.w3-animate-fading{animation:fading 10s infinite}@keyframes fading{0%{opacity:0.3}50%{opacity:1}100%{opacity:0.3}}
+
+.w3-animate-fading1{animation:fadingg 10s infinite}@keyframes fadingg{0%{opacity:1}50%{opacity:0.3}100%{opacity:1}}
+
+.btn-default2 {
+	border-radius: 15px;
+	color:#fff;
+	background-color:#ADD7D5;
+	border-color:#ADD7D5;
+}
+
+.serviceview {
+	background-image: url("{{ asset('img/service/view.jpg') }}");
+}
+
+.col-sm-3 .bulat {
+	background-color: #F5F5F5;
+	border-radius:100em;
+	opacity:1;
+	border:3px solid #dcdcdc;
+	width:110px;
+	height:110px;
+	margin:auto;
+	padding-top: 20px;
+}
+
+.col-sm-1 {
+	padding-left: 40px;
+}
+
+.bg-green {
+
+}
+.bg-white {
+	background-color: white;
+}
+
+p {
+	color: grey;
+}
+
+h6 {
+	color: white;
+}
+
+.list-group-flush{
+
+}
+
+.footer {
+	padding: 1px;
+    width: 100%;
+    background-color: #08b70a;
+    color: white;
+    height: 60px;
+}
+
+.pull-right {
+	margin-top:-30px;
+	margin-right: 50px;
+	opacity: 0.5;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("../img/service/view.jpg");
+
+    /* Set a specific height */
+    min-height: 500px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
