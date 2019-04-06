@@ -34,10 +34,10 @@
 						{{-- <i class="text-info"></i> --}}
 						<p class="text-info" style="font-size: 14px;">
 							Event yang akan datang <br/>
-							Sabtu, 24 Februari 2019
+							Sabtu, 13 April 2019
 						</p>
 						<h2>
-							"Getting Started With <b>Flutter</b>" - MeetUp #SurabayaDev Maret 2019
+							Workshop Vue.Js
 						</h2>
 
 						<hr/>
