@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Models\Event;
+use App\Models\Category;
 use App\Http\Controllers\Api\v1\BaseApiController;
 
-class EventController extends BaseApiController
+class CategoryController extends BaseApiController
 {
 
     public function __construct()
@@ -20,7 +20,7 @@ class EventController extends BaseApiController
      */
     public function index()
     {
-        return Event::paginate();
+        return Category::paginate();
     }
 
     /**
@@ -42,7 +42,7 @@ class EventController extends BaseApiController
      */
     public function show($id)
     {
-        return Event::findOrFail($id);
+        return Category::findOrFail($id);
     }
 
     /**

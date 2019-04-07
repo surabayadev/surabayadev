@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\Role;
-use App\Models\Testimony;
 use App\Models\User;
+use App\Models\Testimony;
+use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
@@ -15,6 +16,7 @@ $factory->define(User::class, function (Faker $faker) {
         'username' => $username,
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'api_token' => Str::random(60),
         'remember_token' => str_random(10),
         'is_active' => rand(0, 1),
         'status' => User::STATUS_NORMAL,
@@ -26,6 +28,7 @@ $factory->define(User::class, function (Faker $faker) {
         'github' => 'https://github.com/'. $username,
         'facebook' => 'https://facebook.com/'. $username,
         'twitter' => 'https://twitter.com/'. $username,
+        'linkedin' => 'https://www.linkedin.com/in/'. $username,
     ];
 });
 

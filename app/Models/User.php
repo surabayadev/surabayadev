@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use App\Models\Event;
+use App\Models\Blog;
 use App\Models\Role;
+use App\Models\Event;
+use App\Models\Category;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -54,6 +56,21 @@ class User extends Authenticatable
         return $this->hasMany(Event::class);
     }
 
+    public function participants()
+    {
+        return $this->belongsToMany(Event::class)->withPivot('status', 'role')->withTimestamps();
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
+
     public function setRoleIdAttribute($value)
     {
         $this->attributes['role_id'] = $value ?: Role::ROLE_USER;
@@ -70,5 +87,17 @@ class User extends Authenticatable
     public function scopeByEditor($query)
     {
         return $query->where('users.role_id', Role::EDITOR);
+    }
+
+    public function scopeByMember($query)
+    {
+        return $query->where('users.role_id', Role::USER);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where(function ($q) {
+            $q->where('is_active', 1)->where('status', self::STATUS_NORMAL);
+        });
     }
 }

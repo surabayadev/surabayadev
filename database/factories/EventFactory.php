@@ -13,9 +13,9 @@ $factory->define(Event::class, function (Faker $faker) {
         },
         'name' => $name,
         'slug' => str_slug($name),
-        'cover' => 2,
-        'description' => 2,
-        'content' => 2,
+        'cover' => $faker->imageUrl($width = 640, $height = 480),
+        'description' => $faker->paragraph(2),
+        'content' => $faker->paragraph(6),
         'status' => $faker->randomElement([Event::STATUS_PUBLISH, Event::STATUS_HIDE]),
         'participant_limit' => $faker->randomElement([25, 50, 100]),
     ];

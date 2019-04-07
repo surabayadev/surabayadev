@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('api_token', 80)->unique()->nullable()->default(null);
             $table->boolean('is_active')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->string('job')->nullable();
@@ -30,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('github')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

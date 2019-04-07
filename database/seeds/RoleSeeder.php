@@ -23,7 +23,7 @@ class RoleSeeder extends Seeder
             ],
             [
                 'name' => 'editor',
-                'display_name' => 'Editor',
+                'display_name' => 'Editor or Organizer',
                 'description' => 'Editor role',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

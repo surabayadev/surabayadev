@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Models\Blog;
 use App\Http\Controllers\Api\v1\BaseApiController;
 
 class BlogController extends BaseApiController
@@ -19,7 +20,7 @@ class BlogController extends BaseApiController
      */
     public function index()
     {
-        //
+        return Blog::paginate();
     }
 
     /**
@@ -41,7 +42,7 @@ class BlogController extends BaseApiController
      */
     public function show($id)
     {
-        //
+        return Blog::findOrFail($id);
     }
 
     /**
