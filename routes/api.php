@@ -24,3 +24,6 @@ Route::resource('participant', 'ParticipantController');
 Route::post('participant/{slug}/create', 'ParticipantController@store');
 Route::get('all_participant/{slug}', 'ParticipantController@pesertaEvent');
 Route::resource('blog', 'BlogController');
+Route::get('documentation/{slug}', 'EventDocumentationController@documentation');
+Route::post('documentation/{slug}/create', 'EventDocumentationController@store');
+Route::resource('documentation', 'EventDocumentationController');

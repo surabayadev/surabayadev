@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use Validator;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\EventParticipant;
@@ -31,14 +32,18 @@ class ParticipantController extends Controller
      */
     public function store(Request $request, $slug)
     {
-        // $request->validate([
-        //     'name' => 'required|max:255',
-        //     'pemateri' => 'required|string',
-        //     'description' => 'required|min:10',
-        //     'content' => 'required|min:10',
-        //     'tanggal' => 'required|string'
+        $validator = Validator::make($request->all(), [
+            'nama_lengkap' => 'required|string',
+            'email' => 'required|email',
+            'notelp' => 'required',
+            'status' => 'required',
+            'asal_institusi' => 'required|string'
 
-        // ]);
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
         $participant = new EventParticipant;
        
@@ -81,6 +86,19 @@ class ParticipantController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validator = Validator::make($request->all(), [
+            'nama_lengkap' => 'required|string',
+            'email' => 'required|email',
+            'notelp' => 'required',
+            'status' => 'required',
+            'asal_institusi' => 'required|string'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
         $participant = EventParticipant::find($id);
        
         $participant->email = $request->email;

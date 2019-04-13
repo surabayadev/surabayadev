@@ -39,7 +39,7 @@ class EventController extends BaseApiController
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'pemateri' => 'required|string',
             'description' => 'required|min:10',
@@ -47,6 +47,10 @@ class EventController extends BaseApiController
             'tanggal' => 'required|string'
 
         ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
         $event = new Event;
         if(auth()->check()){
@@ -56,6 +60,7 @@ class EventController extends BaseApiController
         }
         $event->name = $request->name;
         $event->pemateri = $request->pemateri;
+        $event->pemateri2 = $request->pemateri2;
         $event->slug = Str::slug($request->name);
         $event->description = $request->description;
         $event->content = $request->content;
@@ -100,7 +105,7 @@ class EventController extends BaseApiController
      */
     public function update(Request $request, $slug)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'pemateri' => 'required|string',
             'description' => 'required|min:10',
@@ -108,6 +113,10 @@ class EventController extends BaseApiController
             'tanggal' => 'required|string'
 
         ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
 
         $event = Event::where('slug', $slug)->first();
 
@@ -118,6 +127,7 @@ class EventController extends BaseApiController
         }
         $event->name = $request->name;
         $event->pemateri = $request->pemateri;
+        $event->pemateri2 = $request->pemateri2;        
         $event->slug = Str::slug($request->name);
         $event->description = $request->description;
         $event->content = $request->content;
@@ -153,4 +163,6 @@ class EventController extends BaseApiController
             'message' => 'Event berhasil dihapus'
         ]);
     }
+
+
 }
