@@ -18,11 +18,17 @@ class CreateEventsTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('cover');
+            $table->text('cover')->nullable();
+            $table->string('city');
+            $table->text('address');
             $table->text('description');
             $table->text('content');
             $table->tinyInteger('status')->default(0);
             $table->bigInteger('participant_limit')->default(0);
+            $table->string('ig_hashtag')->nullable();
+            $table->string('ig_hashtag_status', 100)->nullable()->default('idle');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->softDeletes();
             $table->timestamps();
 

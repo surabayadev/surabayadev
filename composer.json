@@ -7,10 +7,13 @@
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
+        "freshbitsweb/laratables": "^1.1",
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.1",
         "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.7"
+        "laravelcollective/html": "^5.7",
+        "mgp25/instagram-php": "^6.0",
+        "rap2hpoutre/laravel-log-viewer": "^1.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -21,6 +24,9 @@
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
+        "files": [
+            "app/helpers.php"
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"

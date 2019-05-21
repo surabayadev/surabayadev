@@ -4,10 +4,13 @@ namespace App\Models;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Traits\StatusableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
+    use StatusableTrait;
+
     const STATUS_HIDE = 0;
 
     const STATUS_PUBLISH = 1;
@@ -22,5 +25,35 @@ class Blog extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('defaultRelations', function ($q) {
+            $q->with('category');
+        });
+    }
+
+    public function scopeByPublish($q)
+    {
+        return $q->where('status', self::STATUS_PUBLISH);
+    }
+
+    public function scopeByHide($q)
+    {
+        return $q->where('status', self::STATUS_HIDE);
+    }
+
+    public function scopeFilterable($q)
+    {
+        $status = request('status');
+        $search = request('search');
+        return $q->when($status, function ($q) use ($status) {
+            return $q->where('blogs.status', $status);
+        })->when($search, function ($q) use ($search) {
+            return $q->where('title', 'LIKE', "%{$search}%");
+        });
     }
 }

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\Category;
 use App\Models\Testimony;
+use App\Models\EventPhoto;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
         Role::truncate();
         User::truncate();
         Event::truncate();
+        EventPhoto::truncate();
         Testimony::truncate();
         Category::truncate();
         Blog::truncate();

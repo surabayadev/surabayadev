@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\v1\BlogController;
-use App\Http\Controllers\Api\v1\EventController;
 use Illuminate\Http\Request;
 
 /*

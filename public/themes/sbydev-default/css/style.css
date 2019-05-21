@@ -1,0 +1,188 @@
+/* Coming Soon */
+
+#upcoming {
+    background-image: url('./asset/bg/bg-circle.svg'), linear-gradient(80deg, #00ac95, #53c940);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+@media only screen and (max-width: 769px) {
+    #upcoming {
+        text-align: center;
+    }
+}
+
+.speaker-photo img {
+    clip-path: circle(40%);
+    width: 100%;
+}
+
+/* Documentation */
+
+/* Footer */
+
+.footer-item p {
+    color: #c0daee;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-item {
+        margin-bottom: 20px;
+    }
+}
+
+/* About Us */
+
+/* Headline */
+
+#headline {
+    background-image: url('./asset/img/team.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 20%;
+    padding-bottom: 11%;
+}
+
+#headline>.container>img {
+    display: table;
+    margin: auto;
+    margin-bottom: 10%;
+}
+
+#headline>.container>a {
+    display: table;
+    margin: auto;
+}
+
+@media only screen and (max-width: 1366px) {
+    #headline {
+        padding-top: 30%;
+        padding-bottom: 10%;
+        width: auto;
+        background-size: 200%;
+        background-position: center top;
+    }
+    #headline>.container>img {
+        width: 50%;
+        height: auto;
+        margin-bottom: 10%;
+    }
+    #headline>a {
+        width: 17%;
+    }
+}
+
+/* Sejarah */
+
+#aboutus-bg-1 {
+    background-image: url('./asset/bg/blob-shape-1.svg');
+    background-repeat: no-repeat;
+    background-size: 817.2px;
+    background-position: -200px 90%;
+}
+
+#sejarah {
+    display: table;
+    margin: auto;
+}
+
+#sejarah-1 {
+    margin-top: 10%;
+}
+
+#sejarah-2 {
+    margin-top: 10%;
+}
+
+#sejarah-1>.col-lg-5>p #sejarah-2>.col-lg-5>p {
+    vertical-align: middle;
+}
+
+#sejarah-2>.col-lg-5>img, #sejarah-1>.col-lg-5>img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1366px) {
+    #sejarah-1 {
+        text-align: center
+    }
+    #sejarah-2 {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    #sejarah-1>img {
+        display: table;
+        margin: auto;
+    }
+    #sejarah-2>img {
+        display: table;
+        margin: auto;
+    }
+}
+
+/* Visi Misi */
+
+#visimisi {
+    text-align: center;
+}
+
+/* Program Kegiatan */
+
+#programkegiatan img {
+    width: 100%;
+}
+
+/* Tim Kami */
+
+#timkami {
+    text-align: center;
+    display: table;
+    margin: auto;
+}
+
+#timkami .col-md-4 {
+    padding: 8%;
+}
+
+#timkami img {
+    width: 80%;
+}
+
+/* Login */
+#login-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 5%;
+    display: table;
+    margin: auto;
+    width: 50%;
+}
+#login-card button {
+    width: 100%;
+}
+@media only screen and (max-width: 768px) {
+    #login-card{
+        width: 90%;
+    }
+}
+
+
+/* Register */
+#register-card{
+    background-color: white;
+    border-radius: 10px;
+    padding: 5%;
+}
+#register-card button{
+    width: 100%;
+}
+@media only screen and (max-width: 768px) {
+    #register-card{
+        width: 100%;
+    }
+}

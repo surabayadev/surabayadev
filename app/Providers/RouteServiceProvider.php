@@ -15,6 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $namespaceAdmin = 'App\Http\Controllers\Admin';
     protected $namespaceApi = 'App\Http\Controllers\Api\\';
 
     /**
@@ -39,8 +40,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-
-        //
+        
+        $this->mapAdminRoutes();
     }
 
     /**
@@ -55,6 +56,15 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapAdminRoutes()
+    {
+        Route::middleware(['web', 'auth'])
+            ->prefix('admin')
+            ->name('admin.')
+            ->namespace($this->namespaceAdmin)
+            ->group(base_path('routes/admin.php'));
     }
 
     /**

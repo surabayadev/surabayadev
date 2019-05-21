@@ -19,4 +19,12 @@ class Category extends Model
     {
         return $this->hasMany(Blog::class);
     }
+
+    public static function getDropdown()
+    {
+        return self::orderBy('name', 'asc')
+            ->get()
+            ->pluck('name', 'id')
+            ->toArray();
+    }
 }

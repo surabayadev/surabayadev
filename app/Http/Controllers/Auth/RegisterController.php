@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -41,6 +43,28 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $data = [
+            'title' => 'Register'
+        ];
+        return view('theme::contents.register', $data);
+    }
+
+    public function register(Request $request)
+    {
+        app()->setLocale('id');
+        $request->offsetSet('username', str_slug($request->get('name')));
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,13 +75,17 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'name' => 'required|string|alpha_dash|max:255',
+            'username' => 'required|string|alpha_dash|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'province' => 'required',
-            'city' => 'required',
-            'address' => 'required',
+            'password' => 'required|string|min:6',
+            'province' => 'sometimes|required',
+            'city' => 'sometimes|required',
+            'address' => 'sometimes|required',
             'phone' => 'required|numeric',
+        ], [], [
+            'name' => 'Nama Lengkap',
+            'phone' => 'Telepon',
+            'email' => 'Alamat Email',
         ]);
     }
 
@@ -74,9 +102,9 @@ class RegisterController extends Controller
             'role_id' => Role::USER,
             'username' => $data['username'],
             'email' => $data['email'],
-            'province' => $data['province'],
-            'city' => $data['city'],
-            'address' => $data['address'],
+            'province' => array_get($data, 'province'),
+            'city' => array_get($data, 'city'),
+            'address' => array_get($data, 'address'),
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);

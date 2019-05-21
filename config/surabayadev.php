@@ -1,11 +1,11 @@
 <?php
 
 return [
-	'role' => [
+    'theme' => 'sbydev-default',
 
-		'editor' => [
-			''
-		],
+    'ig' => [
+        'limit' => 6,
 
-	],
+        'limit_carousel' => 5,
+    ],
 ];

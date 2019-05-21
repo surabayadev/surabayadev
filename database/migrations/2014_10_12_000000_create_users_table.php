@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('api_token', 80)->unique()->nullable()->default(null);
             $table->boolean('is_active')->default(0);
+            $table->boolean('is_subscribe')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->string('job')->nullable();
             $table->string('province')->nullable();

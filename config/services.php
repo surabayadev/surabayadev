@@ -39,4 +39,9 @@ return [
         'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
         'redirect' => '',
     ],
+
+    'instagram' => [
+        'username' => env('SERVICES_IG_USERNAME'),
+        'password' => env('SERVICES_IG_PASSWORD'),
+    ],
 ];
