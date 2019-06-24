@@ -47,31 +47,24 @@
         </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo">
+    <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.user.') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.user.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>Users</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('admin.user.index') }}">All Users</a>
-                <a class="collapse-item" href="{{ route('admin.user.index') }}">Editor</a>
-                <a class="collapse-item" href="{{ route('admin.user.index') }}">Member</a>
-            </div>
-        </div>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#" disabled>
+        <a class="nav-link" href="javascript: void();" disabled>
             <i class="fas fa-fw fa-envelope"></i>
-            <span>Inbox</span>
+            <span>Inbox <small class="badge badge-default">(soon)</small></span>
         </a>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.category.') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.category.index') }}">
             <i class="fas fa-fw fa-tag"></i>
-            <span>Categories</span>
+            <span>Categories <small class="badge badge-default">(soon)</small></span>
         </a>
     </li>
 
@@ -82,17 +75,17 @@
         </a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.testimony.') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.testimony.index') }}">
             <i class="fas fa-fw fa-comments"></i>
-            <span>Testimonies</span>
+            <span>Testimonies <small class="badge badge-default">(soon)</small></span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="javascript: void();">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Site Settings</span>
+            <span>Site Settings <small class="badge badge-default">(soon)</small></span>
         </a>
     </li>
 
@@ -105,16 +98,16 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="javascript: void();">
             <i class="fab fa-telegram-plane"></i>
-            <span>Telegram Integrations</span>
+            <span>Telegram <small class="badge badge-default">(soon)</small></span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="javascript: void();">
             <i class="fab fa-fw fa-facebook"></i>
-            <span>Facebook Integrations</span>
+            <span>Facebook <small class="badge badge-default">(soon)</small></span>
         </a>
     </li>
 

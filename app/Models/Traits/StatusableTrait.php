@@ -5,6 +5,7 @@ namespace App\Models\Traits;
 use App\Models\Blog;
 use App\Models\User;
 use App\Models\Event;
+use Illuminate\Database\Eloquent\Model;
 
 trait StatusableTrait
 {
@@ -24,7 +25,7 @@ trait StatusableTrait
         return $this;
     }
 
-    public function getStatusText($asHtml = false)
+    public function getStatusText(Model $model, $asHtml = false)
     {
         $status = $this->{$this->statusColumn};
         $text = '';
@@ -44,7 +45,11 @@ trait StatusableTrait
         elseif (User::class == get_class()) {
             switch ($status) {
                 case User::STATUS_NORMAL:
-                    $text = $this->transformStatus('Normal', $asHtml, 'badge-primary');
+                    if ($model->is_active) {
+                        $text = $this->transformStatus('Active', $asHtml, 'badge-success');
+                    } else {
+                        $text = $this->transformStatus('Pending', $asHtml, 'badge-primary');
+                    }
                     break;
 
                 case User::STATUS_PRIVATE:

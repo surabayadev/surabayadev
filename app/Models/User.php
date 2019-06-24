@@ -6,6 +6,8 @@ use App\Models\Blog;
 use App\Models\Role;
 use App\Models\Event;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
+use App\Models\Traits\StatusableTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,7 +15,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use SoftDeletes, Notifiable;
+    use SoftDeletes, Notifiable, StatusableTrait;
 
     const STATUS_NORMAL = 0;
     const STATUS_PRIVATE = 1;
@@ -24,8 +26,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $guarded = [
-        'created_at', 'updated_at', 'deleted_at', 'is_active',
+    protected $fillable = [
+        'role_id', 'name', 'email', 'username', 'password', 'is_subscribe', 'status', 'gender', 'job', 'province', 'city', 'address', 'phone', 'github', 'facebook', 'twitter', 'linkedin'
     ];
 
     /**
@@ -76,6 +78,36 @@ class User extends Authenticatable
         $this->attributes['role_id'] = $value ?: Role::ROLE_USER;
     }
 
+    public static function validationRules($ignoreUserId = null)
+    {
+        $reservedUsername = implode(config('surabayadev.reserved_word'), ',');
+        $rules = [
+            'name' => 'required|min:2|max:50',
+            'username' => 'required|min:2|max:50|unique:users|not_in:'. $reservedUsername,
+            'email' => 'required|unique:users',
+            'password' => 'required|confirmed|string|min:6',
+            'phone' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'address' => 'required'
+        ];
+
+        if ($ignoreUserId) {
+            $rules['email'] = [
+                'required',
+                Rule::unique('users')->ignore($ignoreUserId),
+            ];
+            $rules['username'] = [
+                'required',
+                'not_in:'. $reservedUsername,
+                Rule::unique('users')->ignore($ignoreUserId),
+            ];
+            $rules['password'] = 'string|min:6';
+        }
+
+        return $rules;
+    }
+
     public function scopeByRole($query, $role_id)
     {
         if (is_array($role_id)) {
@@ -99,5 +131,39 @@ class User extends Authenticatable
         return $query->where(function ($q) {
             $q->where('is_active', 1)->where('status', self::STATUS_NORMAL);
         });
+    }
+
+    public function scopeFilterable($q)
+    {
+        $status = request('status');
+        $role = request('role');
+        $search = request('search');
+        return $q->where('role_id', '!=', 1)
+            ->when(request()->has('status'), function ($q) use ($status) {
+                if ($status == 'active') {
+                    return $q->where('users.status', $status)->where('is_active', true);
+                } elseif ($status == 'pending') {
+                    return $q->where('users.status', $status)->where('is_active', false);
+                } elseif ($status == 'block') {
+                    return $q->where('users.status', self::STATUS_BLOCK);
+                }
+            })->when($role, function ($q) use ($role) {
+                if ($role == 'member') {
+                    return $q->where('users.role_id', Role::USER);
+                } elseif ($role == 'organizer') {
+                    return $q->where('users.role_id', Role::EDITOR);
+                }
+            })->when($search, function ($q) use ($search) {
+                return $q->where(function ($qq) use ($search) {
+                    $qq->where('name', 'LIKE', "%{$search}%")
+                        ->orWhere('username', 'LIKE', "%{$search}%")
+                        ->orWhere('email', 'LIKE', "%{$search}%");
+                });
+            });
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id === Role::ADMIN;
     }
 }

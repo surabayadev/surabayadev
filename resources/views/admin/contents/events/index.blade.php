@@ -9,12 +9,12 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold">
-            Total Events: {{ $eventCount }}
+        <h6 class="m-0 d-inline font-weight-bold">
+            Total All Events: {{ $eventCount }}
         </h6>
     </div>
     <div class="card-body">
-        {!! Form::model(request()->all(), ['method' => 'GET', 'class' => 'form-inline mb-3 justify-content-center']) !!}
+        {!! Form::model(request()->all(), ['method' => 'GET', 'class' => 'form-inline mb-4 justify-content-center']) !!}
             <div class="mr-2">
                 {!! Form::select('status', [
                     'all' => 'Status: All',
@@ -69,11 +69,11 @@
                         <td>
                             {{ $evt->participant_limit }}
                         </td>
-                        <td>{!! $evt->getStatusText(true) !!}</td>
+                        <td>{!! $evt->getStatusText($evt, true) !!}</td>
                         <td><span title="{{ date_formatted($evt->created_at, false) }}">{{ date_formatted($evt->created_at) }}</span></td>
                         <td>
                             <a href="{{ route('admin.event.edit', $evt->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="{{ route('admin.event.destroy', $evt->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ route('admin.event.destroy', $evt->id) }}" class="btn btn-danger btn-sm" data-method="delete" data-confirm="Are you sure?">Delete</a>
                         </td>
                     </tr>
                     @empty

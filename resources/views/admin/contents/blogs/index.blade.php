@@ -16,7 +16,7 @@
         </h6>
     </div>
     <div class="card-body">
-        {!! Form::model(request()->all(), ['method' => 'GET', 'class' => 'form-inline mb-3 justify-content-center']) !!}
+        {!! Form::model(request()->all(), ['method' => 'GET', 'class' => 'form-inline mb-4 justify-content-center']) !!}
             <div class="mr-2">
                 {!! Form::select('status', [
                     'all' => 'Status: All',
@@ -68,7 +68,7 @@
                                     -
                                 @endif
                             </td>
-                            <td class="text-center">{!! $b->getStatusText(true) !!}</td>
+                            <td>{!! $b->getStatusText($b, true) !!}</td>
                             <td>{{ date_formatted($b->created_at) }}</td>
                             <td>
                                 <a href="{{ route('admin.blog.edit', 1) }}" class="btn btn-primary btn-sm">Edit</a>

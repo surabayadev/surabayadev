@@ -13,7 +13,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = '';
+        $data = [
+            'title' => 'Manage Categories',
+            'categories' => $categories
+        ];
+        return view('admin::contents.categories.index', $data);
     }
 
     /**

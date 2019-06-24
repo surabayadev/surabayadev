@@ -14,7 +14,7 @@
                         {!! Form::open(['method' => 'POST', 'url' => '/register']) !!}
                             <div class="form-group">
                                 {!! Form::label('name', 'Nama Lengkap') !!}
-                                {!! Form::text('name', null, [ 'class' => 'form-control '. ($errors->first('name') ? 'is-invalid' : ''), 'placeholder' => 'ex: Sobirin Wulandari']) !!}
+                                {!! Form::text('name', null, [ 'class' => 'form-control '. ($errors->first('name') ? 'is-invalid' : ''), 'placeholder' => 'ex: Sobirin Rodriguez']) !!}
                                 @if ($errors->first('name'))
                                     <div class="invalid-feedback">{{ $errors->first('name') }}</div>
                                 @endif

@@ -99,7 +99,9 @@ class Event extends Model
         $status = request('status');
         $search = request('search');
         return $q->when(request()->has('status'), function ($q) use ($status) {
-            return $q->where('events.status', $status);
+            if ($status != 'all') {
+                return $q->where('events.status', $status);
+            }
         })->when($search, function ($q) use ($search) {
             return $q->where('name', 'LIKE', "%{$search}%");
         });

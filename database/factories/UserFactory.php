@@ -24,7 +24,7 @@ $factory->define(User::class, function (Faker $faker) {
         'province' => $faker->state,
         'city' => $faker->city,
         'address' => $faker->streetAddress,
-        'phone' => $faker->phoneNumber,
+        'phone' => '+62'. $faker->randomNumber(),
         'github' => 'https://github.com/'. $username,
         'facebook' => 'https://facebook.com/'. $username,
         'twitter' => 'https://twitter.com/'. $username,

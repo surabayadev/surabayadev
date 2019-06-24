@@ -6,8 +6,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="description" content="SurabayaDev Website">
+  <meta name="author" content="SurabayaDev Team">
 
   <title>{{ str_finish(@$title ?: 'Page', ' - ') }} {{ config('app.name') }}</title>
 
@@ -37,6 +38,9 @@
                 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+                        @include('admin::partials.alert')
+
                     @yield('content')
                 </div>
             </div>
@@ -46,6 +50,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ admin_asset('js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('js/link-sangar.js') }}"></script>
     <script>
         $('body *[data-toggle=tooltip]').tooltip({ boundary: 'window' })
     </script>

@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(0);
             $table->boolean('is_subscribe')->default(0);
             $table->tinyInteger('status')->default(0);
+            $table->string('gender', 1)->default('m');
             $table->string('job')->nullable();
             $table->string('province')->nullable();
             $table->string('city')->nullable();

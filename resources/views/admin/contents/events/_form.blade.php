@@ -56,8 +56,6 @@
 </script>
 @stop
 
-@include('admin::partials.alert')
-
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold">Event Details</h6>
 </div>
@@ -85,13 +83,11 @@
         {!! Form::label('status', 'Status*', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-4">
             <div class="form-check form-check-inline">
-                {!! Form::radio('status', App\Models\Event::STATUS_HIDE, null, ['class' => 'form-check-input', 'id' =>
-                'status_hide']) !!}
+                {!! Form::radio('status', App\Models\Event::STATUS_HIDE, null, ['class' => 'form-check-input', 'id' => 'status_hide']) !!}
                 <label class="form-check-label" for="status_hide">Hide</label>
             </div>
             <div class="form-check form-check-inline">
-                {!! Form::radio('status', App\Models\Event::STATUS_PUBLISH, true, ['class' => 'form-check-input', 'id'
-                => 'status_publish']) !!}
+                {!! Form::radio('status', App\Models\Event::STATUS_PUBLISH, true, ['class' => 'form-check-input', 'id' => 'status_publish']) !!}
                 <label class="form-check-label" for="status_publish">Publish</label>
             </div>
         </div>
@@ -185,31 +181,32 @@
                 @endif
             </div>
             <small class="form-text text-muted">Pengambilan gambar dari instagram hashtag dilakukan melalui proses di background (cron), biasanya delay sampai 1-3 menit</small>
-            </div>
-        </div>
-        <div>
-            @if (!optional(@$event->photos)->isEmpty())
-            <div class="container">
-                <div class="row">
-                    @if (@$event)
-                    @foreach ($event->photos as $p)
-                        <div class="col-lg-3 col-md-4 col-xs-6">
-                            <a href="{{ $p->source_link }}" target="_blank" class="thumb"
-                                style="display: block; overflow: hidden; width: 100%; height: 170px; margin-bottom: 20px; position: relative; justify-content: center;">
-                                <img src="{{ $p->thumbnail }}" class="img-responsive">
-                            </a>
-                        </div>
-                    @endforeach
-                    @endif
-                </div>
-            </div>
-            @elseif (optional(@$event)->ig_hashtag_status == 'pending')
-                <p class="text-center text-mute"><i class="fas fa-spinner fa-spin"></i> Fetching Instagram Hashtag Photos...</p>
-            @elseif (optional(@$event)->ig_hashtag_status == 'success')
-                <p class="text-center text-mute"> Fetching success but there is no photos in this hashtag...</p>
-            @endif
         </div>
     </div>
-    <div class="card-footer text-center">
-        <button type="submit" class="btn btn-lg btn-primary">Submit &raquo;</button>
+    <div>
+        @if (!optional(@$event->photos)->isEmpty())
+        <div class="container">
+            <div class="row">
+                @if (@$event)
+                @foreach ($event->photos as $p)
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <a href="{{ $p->source_link }}" target="_blank" class="thumb"
+                            style="display: block; overflow: hidden; width: 100%; height: 170px; margin-bottom: 20px; position: relative; justify-content: center;">
+                            <img src="{{ $p->thumbnail }}" class="img-responsive">
+                        </a>
+                    </div>
+                @endforeach
+                @endif
+            </div>
+        </div>
+        @elseif (optional(@$event)->ig_hashtag_status == 'pending')
+            <p class="text-center text-mute"><i class="fas fa-spinner fa-spin"></i> Fetching Instagram Hashtag Photos...</p>
+        @elseif (optional(@$event)->ig_hashtag_status == 'success')
+            <p class="text-center text-mute"> Fetching success but there is no photos in this hashtag...</p>
+        @endif
     </div>
+</div>
+<div class="card-footer text-center">
+    <a href="{{ route('admin.event.index') }}" class="btn btn-secondary mr-3">&laquo; Back</a>
+    <button type="submit" class="btn btn-lg btn-primary">Save &raquo;</button>
+</div>
