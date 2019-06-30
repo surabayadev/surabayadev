@@ -7,7 +7,7 @@
                 <div class="col-12 col-md-6 align-self-center">
                     <h1 class="text-light">Daftarkan Dirimu.</h1>
                     <h4 class="text-light">Daftar yuk biar kamu bisa dapetin banyak benefit dari komunitas SurabayaDev.</h4>
-                    <h4 class="text-light">Sudah punya akun? <a href="{{ route('login') }}" class="text-info">Klik Disini</a> untuk Login.</h4>
+                    <h4 class="text-light">Sudah punya akun? <a href="{{ route('login') }}" class="text-white" style="text-decoration: underline;">Klik Disini</a> untuk Login.</h4>
                 </div>
                 <div class="col-12 col-md-6 mt-4">
                     <div class="card-closed m-auto" id="register-card">

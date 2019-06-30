@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/email/verify';
 
     /**
      * Create a new controller instance.
@@ -58,6 +58,8 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
+
+        $user->sendEmailVerificationNotification();
 
         $this->guard()->login($user);
 

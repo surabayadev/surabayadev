@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
@@ -28,5 +29,21 @@ class ForgotPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showLinkRequestForm()
+    {
+        $data = [
+            'title' => 'Lupa Password'
+        ];
+        return view('theme::contents.forget_password', $data);
+    }
+
+    protected function sendResetLinkResponse(Request $request, $response)
+    {
+        return back()->withAlert([
+            'type' => 'success',
+            'title' => 'Kami telah mengirim Reset Link Password.',
+        ]);
     }
 }

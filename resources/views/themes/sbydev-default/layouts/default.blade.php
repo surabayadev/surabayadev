@@ -10,6 +10,7 @@
     <title>{{ str_finish(@$title ?: 'Page', ' - ') }} {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     <link href="{{ theme_asset('css/sbydev.css') }}" rel="stylesheet">
     <link href="{{ theme_asset('css/style.css') }}" rel="stylesheet">
 
@@ -25,6 +26,10 @@
     <script src="{{ theme_asset('js/jquery.min.js') }}"></script>
     <script src="{{ theme_asset('js/popper.min.js') }}"></script>
     <script src="{{ theme_asset('js/bootstrap.min.js') }}"></script>
+    
+    <script>
+        $('body *[data-toggle=tooltip]').tooltip({ boundary: 'window' })
+    </script>
 
     @yield('foot')
 </body>

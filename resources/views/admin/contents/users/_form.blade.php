@@ -112,6 +112,13 @@
 </div>
 <div class="card-body">
     <div class="form-group row">
+        {!! Form::label('website', 'Website', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-md-6">
+            {!! Form::text('website', null, ['class' => 'form-control', 'placeholder' =>
+                'https://sobirin-rodriguez.com']) !!}
+        </div>
+    </div>
+    <div class="form-group row">
         {!! Form::label('github', 'Github', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-md-6">
             <div class="input-group">
@@ -143,6 +150,18 @@
                     <span class="input-group-text" id="basic-addon3">https://facebook.com/</span>
                 </div>
                 {!! Form::text('facebook', null, ['class' => 'form-control', 'placeholder' =>
+                'sobirin-rodriguez']) !!}
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        {!! Form::label('instagram', 'Instagram', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">https://instagram.com/</span>
+                </div>
+                {!! Form::text('instagram', null, ['class' => 'form-control', 'placeholder' =>
                 'sobirin-rodriguez']) !!}
             </div>
         </div>

@@ -11,9 +11,10 @@ use App\Models\Traits\StatusableTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use SoftDeletes, Notifiable, StatusableTrait;
 
@@ -27,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'role_id', 'name', 'email', 'username', 'password', 'is_subscribe', 'status', 'gender', 'job', 'province', 'city', 'address', 'phone', 'github', 'facebook', 'twitter', 'linkedin'
+        'role_id', 'name', 'email', 'username', 'password', 'is_subscribe', 'status', 'gender', 'job', 'province', 'city', 'address', 'phone', 'website', 'github', 'facebook', 'instagram', 'twitter', 'linkedin'
     ];
 
     /**
@@ -83,7 +84,7 @@ class User extends Authenticatable
         $reservedUsername = implode(config('surabayadev.reserved_word'), ',');
         $rules = [
             'name' => 'required|min:2|max:50',
-            'username' => 'required|min:2|max:50|unique:users|not_in:'. $reservedUsername,
+            'username' => 'required|alpha_dash|min:2|max:40|unique:users|not_in:'. $reservedUsername,
             'email' => 'required|unique:users',
             'password' => 'required|confirmed|string|min:6',
             'phone' => 'required',
@@ -99,6 +100,9 @@ class User extends Authenticatable
             ];
             $rules['username'] = [
                 'required',
+                'alpha_dash',
+                'min:2',
+                'max:40',
                 'not_in:'. $reservedUsername,
                 Rule::unique('users')->ignore($ignoreUserId),
             ];
@@ -138,7 +142,7 @@ class User extends Authenticatable
         $status = request('status');
         $role = request('role');
         $search = request('search');
-        return $q->where('role_id', '!=', 1)
+        return $q->where('role_id', '!=', Role::ADMIN)
             ->when(request()->has('status'), function ($q) use ($status) {
                 if ($status == 'active') {
                     return $q->where('users.status', $status)->where('is_active', true);
@@ -160,6 +164,22 @@ class User extends Authenticatable
                         ->orWhere('email', 'LIKE', "%{$search}%");
                 });
             });
+    }
+
+    public function transformSocialLink($provider)
+    {
+        $providerList = ['github', 'facebook', 'instagram', 'twitter', 'linkedin'];
+        if (!in_array($provider, $providerList)) {
+            return;
+        }
+
+        $links = 'https://'. $provider .'.com/';
+
+        if ($provider === 'linkedin') {
+            return $links .'/in/'. $this->{$provider};
+        }
+
+        return $links . $this->{$provider};
     }
 
     public function isAdmin()

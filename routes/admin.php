@@ -1,6 +1,6 @@
 <?php
 
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
 Route::resource('event', 'EventController');

@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/profile';
 
     /**
      * Create a new controller instance.
@@ -51,5 +51,10 @@ class LoginController extends Controller
         if ($user->isAdmin()) {
             return redirect()->route('admin.dashboard');
         }
+    }
+
+    protected function loggedOut(Request $request)
+    {
+        return redirect()->route('login');
     }
 }

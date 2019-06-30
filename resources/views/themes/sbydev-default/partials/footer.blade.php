@@ -21,16 +21,19 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-item">
                     <h6>Contact Us</h6>
-                    <p class="mt-3"><span class="mr-3"><img src="{{ theme_asset('css/asset/icon/mail.svg') }}" alt=""
-                                srcset=""></span>sbydev@gmail.com</p>
+                    <a href="mailto:surabayadev@gmail.com">
+                        <p class="mt-3"><span class="mr-3"><img src="{{ theme_asset('css/asset/icon/mail.svg') }}" alt="" srcset=""></span>surabayadev@gmail.com</p>
+                    </a>
                     <p><span class="mr-3"><img src="{{ theme_asset('css/asset/icon/call.svg') }}" alt="" srcset=""></span>+628-888-888-8888
                     </p>
+                    <a href="https://t.me/surabayadev" target="_blank">
+                        <p><span class="mr-3"><img src="{{ theme_asset('css/asset/icon/telegram.svg') }}" alt="" srcset=""></span>t.me/surabayadev</p>
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6 footer-item">
-                    <h6>Join telegram group</h6>
-                    <a href="https://t.me/surabayadev" target="_blank">
-                        <p><span class="mr-3"><img src="{{ theme_asset('css/asset/icon/telegram.svg') }}" alt=""
-                                    srcset=""></span>t.me/surabayadev</p>
+                    <h6>This Project is Open Source</h6>
+                    <a href="https://github.com/surabayadev/surabayadev" target="_blank" class="btn btn-secondary mt-4">
+                        View on GitHub &raquo;
                     </a>
                 </div>
             </div>

@@ -30,8 +30,8 @@ class RoleSeeder extends Seeder
             ],
             [
                 'name' => 'user',
-                'display_name' => 'User',
-                'description' => 'Role User',
+                'display_name' => 'Member',
+                'description' => 'Role Member/User',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

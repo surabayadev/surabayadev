@@ -25,10 +25,12 @@ $factory->define(User::class, function (Faker $faker) {
         'city' => $faker->city,
         'address' => $faker->streetAddress,
         'phone' => '+62'. $faker->randomNumber(),
-        'github' => 'https://github.com/'. $username,
-        'facebook' => 'https://facebook.com/'. $username,
-        'twitter' => 'https://twitter.com/'. $username,
-        'linkedin' => 'https://www.linkedin.com/in/'. $username,
+        'website' => 'https://'. $username .'.com/',
+        'github' => $username,
+        'facebook' => $username,
+        'instagram' => $username,
+        'twitter' => $username,
+        'linkedin' => $username,
     ];
 });
 

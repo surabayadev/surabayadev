@@ -10,10 +10,16 @@
 6. [ ] (ADMIN optional) Category Admin CRUD
 7. [ ] (ADMIN optional) Testimony Admin CRUD
 8. [ ] (ADMIN) Cleaning up admin page
-9. [ ] (PUBLIC) Show event to public page (beautify it!)
-10. [ ] Seed all events data (ask teams to provide hashtag unique in each instagram posts)
-11. [ ] Seed Registered User Data from google forms
-12. [] (ADMIN) Dashboard!
+9. [ ] (ADMIN) Dashboard!
+10. [x] (PUBLIC) Email Verification
+11. [x] (PUBLIC) Profile & User page
+12. [x] (PUBLIC) Profile Edit
+13. [x] (PUBLIC) Profile change password
+14. [ ] (PUBLIC) Join Event
+15. [ ] (PUBLIC) Show event to public page (beautify it!)
+16. [ ] Seed all events data (ask teams to provide hashtag unique in each instagram posts)
+17. [ ] Seed Registered User Data from google forms
+18. [ ] [ ] Assets Optimization
 
 
 ### Little note
