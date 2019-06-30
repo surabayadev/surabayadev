@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,7 @@ class EventController extends Controller
     {
         $data = [
             'title' => 'Create Event',
+            'userDropdown' => User::get()->pluck('name', 'id'),
             // 'categoryDropdown' => Category::getDropdown()
         ];
         return view('admin::contents.events.create', $data);
@@ -75,6 +77,7 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $data = [
             'title' => 'Edit Event: ' . $event->title,
+            'userDropdown' => User::get()->pluck('name', 'id'),
             'event' => $event,
         ];
         return view('admin::contents.events.edit', $data);
@@ -107,11 +110,20 @@ class EventController extends Controller
             'content' => 'required',
             'start_date' => 'required|before:' . $request->get('end_date'),
             'end_date' => 'required|after:' . $request->get('start_date'),
+            'speakers' => 'required|array'
         ]);
 
         $event = $id ? Event::findOrFail($id) : new Event;
         $event->fill($request->all());
         $event->user_id = auth()->user()->id;
+
+        if (is_array($request->speakers) && !empty($request->speakers)) {
+            $speakers = [];
+            foreach ($request->speakers as $value) {
+                $speakers[$value] = ['role' => 'speaker', 'status' => 1];
+            }
+            $event->participants()->sync($speakers);
+        }
 
         if (!$event->save()) {
             return false;

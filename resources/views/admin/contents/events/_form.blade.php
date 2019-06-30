@@ -1,5 +1,6 @@
 @section('head')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
     /* Tell Quill not to scroll */
@@ -29,8 +30,10 @@
 
 @section('foot')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script>
+    // Begin Editor
     var quill = new Quill('#quill-container', {
         theme: 'snow'
     });
@@ -40,8 +43,10 @@
         var editorVal = document.querySelector('#quill-container').children[0].innerHTML
         document.querySelector('textarea[name=content]').value = editorVal
     };
+    // End Editor
 
 
+    // Begin Date Range Picker
     var elStartDate = document.querySelector('input[name=start_date]');
     var elEndDate = document.querySelector('input[name=end_date]');
     var configDate = {
@@ -53,6 +58,14 @@
 
     flatpickr(elStartDate, configDate);
     flatpickr(elEndDate, configDate);
+    // End Date Range Picker
+
+
+    // Begin Select2
+    $(document).ready(function() {
+        $('.select2-multiple').select2();
+    });
+    // End Select2
 </script>
 @stop
 
@@ -148,6 +161,20 @@
         {!! Form::label('description', 'Description', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-8">
             {!! Form::textarea('description', null, ['rows' => 4, 'class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+<div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold">Speakers*</h6>
+</div>
+<div class="card-body">
+    <div class="form-group row">
+        {!! Form::label('speakers', 'Speaker', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-sm-8">
+            @php
+            $valSpeakers = !empty($event) ? $event->getSpeakers()->pluck('id') : null ;
+            @endphp
+            {!! Form::select('speakers[]', $userDropdown, $valSpeakers, ['class' => 'form-control select2-multiple', 'multiple' => true]) !!}
         </div>
     </div>
 </div>

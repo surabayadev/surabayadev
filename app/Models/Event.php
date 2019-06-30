@@ -45,12 +45,12 @@ class Event extends Model
 
     public function getSpeakers()
     {
-        return $this->participants->where('pivot.role', 'speaker')->all();
+        return $this->participants->where('pivot.role', 'speaker');
     }
 
     public function getMembers()
     {
-        return $this->participants->where('pivot.role', 'member')->all();
+        return $this->participants->where('pivot.role', 'member');
     }
 
     protected static function boot()

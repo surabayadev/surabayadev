@@ -16,7 +16,7 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-5 pt-5">
                     <div class="col d-flex justify-content-center">
-                        <h3>Our Speaker</h3>
+                        <h3>Speaker</h3>
                     </div>
                     <div class="row mt-5">
                         @forelse ($speakers as $sp)
