@@ -74,6 +74,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Blog::class);
     }
 
+    public function setPhoneAttribute($value)
+    {
+        if (!str_contains($value, '+62')) {
+            $value = '+62'. $value;
+        }
+        $this->attributes['phone'] = $value;
+    }
+
     public function setRoleIdAttribute($value)
     {
         $this->attributes['role_id'] = $value ?: Role::ROLE_USER;

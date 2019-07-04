@@ -20,8 +20,11 @@ class EventController extends Controller
 
     public function show($slug)
     {
+        $event = Event::where('slug', $slug)->firstOrFail();
         $data = [
-            'title' => 'Event Detail'
+            'title' => 'Event Detail',
+            'event' => $event,
+            'speakers' => $event->getSpeakers()
         ];
         return view('theme::contents.event_show', $data);
     }

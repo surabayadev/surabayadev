@@ -53,13 +53,9 @@
                     </td>
                 </tr>
             </table>
-        </div>
-    </div>
-</section>
 
-<section style="padding: 80px 0px 40px 0px;">
-    <div class="container">
-        <div class="col-md-8 offset-md-2">
+            <p>&nbsp;</p>
+
             <h2 class="mb-5">Activities</h2>
 
             <p class="lead text-muted">Coming Soon...</p>

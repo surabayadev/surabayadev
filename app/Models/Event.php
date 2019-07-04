@@ -15,7 +15,7 @@ class Event extends Model
     const STATUS_HIDE = 0;
 
     const STATUS_PUBLISH = 1;
-    
+
     const PARTICIPANT_STATUS_PENDING = 0;
     const PARTICIPANT_STATUS_CONFIRM = 1;
     

@@ -137,10 +137,6 @@ class UserController extends Controller
 
     private function processToDatabase(Request $request, $id = null)
     {
-        if (!str_contains($request->phone, '+62')) {
-            $request->offsetSet('phone', '+62'. $request->phone);
-        }
-
         $user = $id ? User::findOrFail($id) : new User;
         $user->fill($request->all());
 
