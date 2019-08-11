@@ -9,13 +9,17 @@ class EventController extends Controller
 {
     public function index()
     {
-        $upcoming = Event::find(1);
         $data = [
             'title' => 'Event',
             'events' => Event::latest()->paginate(5),
-            'upcoming' => $upcoming,
-            'speakers' => $upcoming->getSpeakers(),
         ];
+        
+        $upcoming = Event::find(1);
+        if ($upcoming) {
+            $data['upcoming'] = $upcoming;
+            $data['speakers'] = $upcoming->getSpeakers();
+        }
+
         return view('theme::contents.event', $data);
     }
 
