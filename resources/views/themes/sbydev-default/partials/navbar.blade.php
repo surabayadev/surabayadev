@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link {{ Route::currentRouteName() == 'event.index' ? 'active' : '' }}" href="{{ route('event.index') }}">Event <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link {{ Route::currentRouteName() == 'site.blog' ? 'active' : '' }}" href="#">Blog</a>
+                <a class="nav-item nav-link {{ Route::currentRouteName() == 'site.blog' ? 'active' : '' }}" href="https://medium.com/surabayadev" target="_blank">Blog</a>
                 <a class="nav-item nav-link {{ Route::currentRouteName() == 'site.merchandise' ? 'active' : '' }}" href="#">Merchandise</a>
                 <a class="nav-item nav-link {{ Route::currentRouteName() == 'site.about' ? 'active' : '' }}" href="{{ route('site.about') }}">About Us</a>
             </div>
@@ -59,14 +59,14 @@
         </div>
     </div>
 @elseif (session('alert'))
-    <div class="m-0 alert alert-{{ session('alert.type') }}">    
+    <div class="m-0 alert alert-{{ session('alert.type', 'info') }}">    
         <div class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <strong>{{ session('alert.title') }}</strong>
+                    <strong class="d-block mb-2">{{ session('alert.title') }}</strong>
                     {{ session('alert.content') }}
                 </div>
             </div>

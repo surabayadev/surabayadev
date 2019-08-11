@@ -27,7 +27,7 @@
                 melengkapi keahlian dan semangat kerjasama.
             </p>
             <br>
-            <a href="about-us.html">
+            <a href="{{ route('site.about') }}">
                 <h5>Baca Selanjutnya</h5>
             </a>
         </div>

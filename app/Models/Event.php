@@ -21,12 +21,15 @@ class Event extends Model
     
     const PARTICIPANT_ROLE_MEMBER = 'member';
     const PARTICIPANT_ROLE_ORGANIZER = 'organizer';
+    const PARTICIPANT_ROLE_SPEAKER = 'speaker';
 
     protected $fillable = ['user_id', 'name', 'slug', 'cover', 'city', 'address', 'description', 'content', 'status', 'participant_limit', 'ig_hashtag', 'ig_hashtag_status', 'start_date', 'end_date'];
 
     protected $dispatchesEvents = [
         'saving' => \App\Events\EventSaving::class
     ];
+
+    protected $dates = ['start_date', 'end_date'];
 
     public function user()
     {

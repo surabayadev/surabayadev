@@ -33,14 +33,19 @@ class DatabaseSeeder extends Seeder
         Blog::truncate();
         DB::table('event_user')->truncate();
 
-        $this->call(
-            [
-                RoleSeeder::class,
-                UserSeeder::class,
+        $data = [
+            RoleSeeder::class,
+            UserSeeder::class,
+        ];
+
+        if (app()->isLocal()) {
+            $data = array_merge($data, [
                 EventSeeder::class,
                 BlogSeeder::class,
-            ]
-        );
+            ]);
+        }
+
+        $this->call($data);
 
         Model::reguard();
         Schema::enableForeignKeyConstraints();

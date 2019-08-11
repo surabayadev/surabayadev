@@ -238,3 +238,7 @@
 #home-testimoni{
     background-color: #F7F7F7;
 }
+
+.g-recaptcha {
+    display: inline-block;
+}

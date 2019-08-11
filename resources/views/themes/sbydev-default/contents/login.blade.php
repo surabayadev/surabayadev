@@ -10,7 +10,7 @@
                 {!! Form::open(['method' => 'POST', 'url' => route('login')]) !!}
                     <div class="form-group">
                         {!! Form::label('email', 'Alamat Email') !!}
-                        {!! Form::email('email', null, ['class' => 'form-control '. ($errors->first('email') ? 'is-invalid' : ''), 'placeholder' => 'ex: sobirin@surabayadev.org']) !!}
+                        {!! Form::email('email', null, ['class' => 'form-control '. ($errors->first('email') ? 'is-invalid' : ''), 'placeholder' => 'ex: sobirin@surabayadev.org', 'autofocus' => true]) !!}
                         @if ($errors->first('email'))
                             <div class="invalid-feedback">{{ $errors->first('email') }}</div>
                         @endif

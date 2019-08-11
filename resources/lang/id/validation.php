@@ -115,6 +115,8 @@ return [
     'url'                  => 'Format isian :attribute tidak valid.',
     'uuid'                 => ':attribute harus UUID yang valid.',
 
+    'recaptcha'            => 'Isian Recaptcha wajib diisi.',
+
     /*
     |---------------------------------------------------------------------------------------
     | Baris Bahasa untuk Validasi Kustom

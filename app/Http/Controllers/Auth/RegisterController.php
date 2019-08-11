@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
@@ -54,14 +55,28 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         app()->setLocale('id');
-        $request->offsetSet('username', str_slug($request->get('name')));
+        $username = str_slug($request->get('name') .'-'. str_random(4));
+        $request->offsetSet('username', $username);
         $this->validator($request->all())->validate();
 
-        event(new Registered($user = $this->create($request->all())));
-
+        // Check if email already imported by check last_login_at equal to null
+        // if found, instead of create new
+        // Update that existing data with new input
+        $user = User::where('email', $request->email)->whereNull('last_login_at')->first();
+        if ($user) {
+            $user->fill($this->fillUserData($request->all()));
+            $user->save();
+        } else {
+            $user = User::create($this->fillUserData($request->all()));
+            event(new Registered($user));
+        }
         $user->sendEmailVerificationNotification();
 
         $this->guard()->login($user);
+
+        // update last login
+        $user->last_login_at = now();
+        $user->save();
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
@@ -78,12 +93,16 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'username' => 'required|string|alpha_dash|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            // 'email' => 'required|string|email|max:255|unique:users',
+            'email' => Rule::unique('users')->where(function ($query) {
+                return $query->whereNotNull('last_login_at');
+            }),
             'password' => 'required|string|min:6',
             'province' => 'sometimes|required',
             'city' => 'sometimes|required',
             'address' => 'sometimes|required',
             'phone' => 'required|numeric',
+            'g-recaptcha-response' => 'recaptcha',
         ], [], [
             'name' => 'Nama Lengkap',
             'phone' => 'Telepon',
@@ -91,15 +110,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
+    protected function fillUserData(array $data)
     {
-        return User::create([
+        return [
             'name' => $data['name'],
             'role_id' => Role::USER,
             'username' => $data['username'],
@@ -108,7 +121,7 @@ class RegisterController extends Controller
             'city' => array_get($data, 'city'),
             'address' => array_get($data, 'address'),
             'phone' => $data['phone'],
-            'password' => Hash::make($data['password']),
-        ]);
+            'password' => bcrypt($data['password']),
+        ];
     }
 }

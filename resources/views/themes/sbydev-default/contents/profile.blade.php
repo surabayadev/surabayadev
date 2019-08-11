@@ -6,9 +6,9 @@
             <div class="speaker-photo">
                 <img src="{{ avatar($user->email) }}" style="width: 200px;">
             </div>
-            <h1 class="mt-0" style="position: relative;">
+            <h1 class="mt-0">
                 {{ $user->name }}
-                <small class="text-white-40" style="font-size: 1rem; position: absolute; font-style: italic;">&nbsp; {{ $user->username }}</small>
+                <small class="text-white-40 d-block mt-1" style="font-size: 1.3rem;">{{ $user->username }}</small>
             </h1>
             <p class="lead">{{ $user->job }}</p>
         </div>

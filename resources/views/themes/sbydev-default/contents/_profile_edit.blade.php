@@ -42,11 +42,12 @@
                         <div class="col-md-9 pt-2">
                             <div class="form-check form-check-inline">
                                 {!! Form::radio('gender', 'm', true, ['class' => 'form-check-input', 'id' => 'gender-male']) !!}
-                                <label class="form-check-label" for="gender-male">Male</label>
+                                <label class="form-check-label" for="gender-male">Lanang (M)</label>
                             </div>
+                            &nbsp;
                             <div class="form-check form-check-inline">
                                 {!! Form::radio('gender', 'f', null, ['class' => 'form-check-input', 'id' => 'gender-female']) !!}
-                                <label class="form-check-label" for="gender-female">Female</label>
+                                <label class="form-check-label" for="gender-female">Wedok (F)</label>
                             </div>
                         </div>
                     </div>
@@ -86,7 +87,13 @@
                             {!! Form::text('job', null, ['class' => 'form-control']) !!}
                         </div>
                     </div>
-                    
+                    <div class="form-group row">
+                        {!! Form::label('company', 'Company/Institute', ['class' => 'col-sm-3 col-form-label']) !!}
+                        <div class="col-md-9">
+                            {!! Form::text('company', null, ['class' => 'form-control']) !!}
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         {!! Form::label('status', 'Personal Privacy', ['class' => 'col-sm-3 col-form-label']) !!}
                         <div class="col-md-9 pt-2">
@@ -99,7 +106,7 @@
                                 <label class="form-check-label" for="status-private">Private</label>
                             </div>
 
-                            <p class="help-block text-muted"><small>Apakah info privacy anda ditampilkan untuk public?</small></p>
+                            <p class="help-block text-muted"><small>Apakah <b>Identitas</b> Anda ditampilkan untuk public?</small></p>
                         </div>
                     </div>
                 </div>

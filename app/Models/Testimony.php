@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Collections\TestimonyCollection;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,10 +16,5 @@ class Testimony extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function newCollection(array $models = [])
-    {
-        return new TestimonyCollection($models);
     }
 }

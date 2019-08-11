@@ -1,5 +1,9 @@
 @extends('theme::layouts.default')
 
+@section('head')
+    {!! htmlScriptTagJsApi(/* $formId - INVISIBLE version only */) !!}
+@stop
+
 @section('content')
     <section class="bg-gradient-1" id="register">
         <div class="container">
@@ -44,6 +48,9 @@
                                 @if ($errors->first('password'))
                                     <div class="invalid-feedback">{{ $errors->first('password') }}</div>
                                 @endif
+                            </div>
+                            <div class="form-group text-center mt-5">
+                                {!! htmlFormSnippet() !!}
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Register</button>
                         {!! Form::close() !!}

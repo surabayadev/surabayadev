@@ -48,6 +48,10 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        // update last login
+        $user->last_login_at = now();
+        $user->save();
+
         if ($user->isAdmin()) {
             return redirect()->route('admin.dashboard');
         }

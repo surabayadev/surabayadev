@@ -113,6 +113,8 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
+    'recaptcha'            => 'Recaptcha field is required',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

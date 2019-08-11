@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->default(0);
             $table->string('gender', 1)->default('m');
             $table->string('job')->nullable();
+            $table->string('company')->nullable();
             $table->string('province')->index()->nullable();
             $table->string('city')->index()->nullable();
             $table->string('address')->index()->nullable();
@@ -36,6 +37,8 @@ class CreateUsersTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
+            $table->string('telegram')->nullable();
+            $table->dateTime('last_login_at')->nullable();
             $table->dateTime('email_verified_at')->nullable();
             $table->rememberToken();
             $table->softDeletes();

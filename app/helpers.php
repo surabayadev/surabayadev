@@ -78,10 +78,10 @@ if (!function_exists('date_formatted')) {
     function date_formatted($dt, $asHuman = null)
     {
         if (is_null($asHuman)) {
-            return ($dt->diffInDays(now()) < 6) ? $dt->diffForHumans() : $dt->format('M j, Y H:i');
+            return ($dt->diffInDays(now()) < 6) ? $dt->diffForHumans() : $dt->format('M j, Y - H:i');
         }
 
-        return !$asHuman ? $dt->format('M j, Y H:i') : $dt->diffForHumans();
+        return !$asHuman ? $dt->format('M j, Y - H:i') : $dt->diffForHumans();
     }
 }
 

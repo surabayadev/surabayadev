@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if (auth()->user()->hasJoined($event))
+    <div class="alert alert-info m-0 text-center text-success">
+        <i class="fa fa-check"></i> You are joined this event.
+    </div>
+@endif
+
 <section id="upcoming" class="bg-gradient-1">
     <div class="container">
         <h4>Upcoming Event</h4>
@@ -32,21 +38,36 @@
                         </a>
                     </div>
                     @empty
-                    <p class="text-muted">To be determined</p>
+                    <div class="col">
+                        <h4 class="text-center text-light py-5">To be determined</h4>
+                    </div>
                     @endforelse
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-light">Join Event</button>
-        &nbsp;&nbsp;
+
+        @if (now()->lessThan($event->start_date))
+            @if (auth()->user()->hasJoined($event))
+                <a href="{{ route('event.cancelJoin', $event->slug) }}" data-method="PUT" data-confirm="Are you sure to cancel?" class="btn btn-danger">
+                    &times; &nbsp; Cancel Join
+                </a>
+            @else
+                <a href="{{ route('event.join', $event->slug) }}" data-method="PUT" class="btn btn-light">Join Event</a>
+            @endif
+            
+            &nbsp;&nbsp;
+        @endif
+
         <div class="dropdown d-inline">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Share
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#"><i class="fab fa-facebook"></i> &nbsp; Facebook</a>
-                <a class="dropdown-item" href="#"><i class="fab fa-whatsapp"></i> &nbsp; Whatsapp</a>
-                <a class="dropdown-item" href="#"><i class="fab fa-instagram"></i> &nbsp; Instagram</a>
+                <a class="dropdown-item" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request()->url() }}"><i class="fab fa-facebook"></i> &nbsp; Facebook</a>
+
+                <a class="dropdown-item" href="whatsapp://send?text=Hai, coba lihat event keren dari Surabayadev: %0A%0A{{ $event->name }} %0A%0A{{ request()->url() }}" data-action="share/whatsapp/share"><i class="fab fa-whatsapp"></i> &nbsp; Whatsapp</a>
+
+                <a class="dropdown-item" target="_blank" href="http://twitter.com/share?text=Hai, coba lihat event keren dari Surabayadev: %0A%0A&url={{ request()->url() }}&hashtags=surabayadev"><i class="fab fa-twitter"></i> &nbsp; Twitter</a>
             </div>
         </div>
     </div>

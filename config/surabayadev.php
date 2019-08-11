@@ -24,5 +24,5 @@ return [
     /**
      * Reserved word to prevent user to use.
      */
-    'reserved_word' => ['support', 'system', 'noreply', 'no-reply', 'security', 'admin', 'tech', 'dev', 'developer', 'engineer', 'profile', 'blog', 'category', 'home', 'about', 'product', 'event', 'login', 'logout']
+    'reserved_word' => ['support', 'system', 'noreply', 'no-reply', 'security', 'admin', 'tech', 'dev', 'developer', 'engineer', 'profile', 'blog', 'category', 'home', 'about', 'product', 'event', 'join', 'register', 'login', 'logout']
 ];

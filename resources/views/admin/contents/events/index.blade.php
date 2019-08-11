@@ -35,9 +35,9 @@
                     <tr>
                         <th>No</th>
                         <th style="width: 430px;">Title</th>
-                        <th>Max Audience</th>
+                        <th>Participants</th>
                         <th>Status</th>
-                        <th>Created at</th>
+                        <th style="width: 205px;">Date</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -45,9 +45,9 @@
                     <tr>
                         <th>No</th>
                         <th>Title</th>
-                        <th>Max Audience</th>
+                        <th>Participants</th>
                         <th>Status</th>
-                        <th>Created at</th>
+                        <th>Date</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -67,10 +67,13 @@
                             {{ $evt->name }}
                         </td>
                         <td>
-                            {{ $evt->participant_limit }}
+                            {{ $evt->participants_count }} (max: {{ $evt->participant_limit }})
                         </td>
                         <td>{!! $evt->getStatusText($evt, true) !!}</td>
-                        <td><span title="{{ date_formatted($evt->created_at, false) }}">{{ date_formatted($evt->created_at) }}</span></td>
+                        <td>
+                            <span class="badge" title="{{ date_formatted($evt->start_date, false) }}">Start: {{ date_formatted($evt->start_date) }}</span>
+                            <span class="badge" title="{{ date_formatted($evt->end_date, false) }}">End: {{ date_formatted($evt->end_date) }}</span>
+                        </td>
                         <td>
                             <a href="{{ route('admin.event.edit', $evt->id) }}" class="btn btn-primary btn-sm">Edit</a>
                             <a href="{{ route('admin.event.destroy', $evt->id) }}" class="btn btn-danger btn-sm" data-method="delete" data-confirm="Are you sure?">Delete</a>

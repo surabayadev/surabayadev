@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt(env('PASS_ADMIN', 'secret')),
             'api_token' => 'YqjpaWG3z8zlDeemfm4B915UQdWvVfkTNONplluBlPuTnWhS53oer6QFl1YY',
             'is_active' => 1,
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
         ]);
 
         factory(User::class)->create([
@@ -30,6 +32,8 @@ class UserSeeder extends Seeder
             'username' => 'arek-editor',
             'email' => 'arek-editor@surabayadev.org',
             'is_active' => 1,
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
         ]);
 
         factory(User::class)->create([
@@ -38,23 +42,63 @@ class UserSeeder extends Seeder
             'username' => 'john-editor',
             'email' => 'john-editor@surabayadev.org',
             'is_active' => 1,
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
         ]);
 
         factory(User::class)->create([
             'name' => 'User biasa',
             'username' => 'userbiasa',
             'email' => 'userbiasa@surabayadev.org',
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
         ]);
 
-        factory(User::class, 10)->create([
-            'role_id' => Role::USER,
+        factory(User::class)->create([
+            'name' => 'Sawitri',
+            'username' => 'sawitri',
+            'email' => 'sawitri.center@gmail.com',
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
         ]);
 
-        $this->seedTestimony();
+        factory(User::class)->create([
+            'name' => 'Arryangga Aliev',
+            'username' => 'arryangga',
+            'email' => 'arryanggaputra@gmail.com',
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'Fathoni',
+            'username' => 'fathoni',
+            'email' => 'achmadfatony@gmail.com',
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
+        ]);
+
+        factory(User::class)->create([
+            'name' => 'Antoni Putra',
+            'username' => 'antoniputra',
+            'email' => 'akiddcode@gmail.com',
+            'last_login_at' => now(),
+            'email_verified_at' => now(),
+        ]);
+
+        if (app()->isLocal()) {
+            // Seed dummy users
+            factory(User::class, 10)->create([
+                'role_id' => Role::USER,
+            ]);
+
+            // seed dummy testiomny
+            $this->seedTestimony();
+        }
     }
 
     protected function seedTestimony()
     {
-        factory(Testimony::class, 12)->create();
+        factory(Testimony::class, 6)->create();
     }
 }

@@ -1,6 +1,4 @@
 /**
- * Author: Antoni Putra <akiddcode@gmail.com>
- * 
  * You have this:
  * <a href="http://localhost/data/delete/1" data-method="delete" data-confirm="Are you sure?">Delete</a>
  *

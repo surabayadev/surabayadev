@@ -15,7 +15,11 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::filterable()->latest()->paginate(10);
+        $events = Event::with('participants')
+            ->withCount('participants')
+            ->filterable()
+            ->latest('start_date')
+            ->paginate(10);
         $data = [
             'title' => 'Event List',
             'events' => $events,

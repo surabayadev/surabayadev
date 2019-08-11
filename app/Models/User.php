@@ -28,7 +28,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'role_id', 'name', 'email', 'username', 'password', 'is_subscribe', 'status', 'gender', 'job', 'province', 'city', 'address', 'phone', 'website', 'github', 'facebook', 'instagram', 'twitter', 'linkedin'
+        'role_id', 'name', 'email', 'username', 'password', 'is_subscribe', 'status', 'gender', 'job', 'company', 'province', 'city', 'address', 'phone', 'website', 'github', 'facebook', 'instagram', 'twitter', 'linkedin', 'telegram'
     ];
 
     /**
@@ -176,7 +176,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function transformSocialLink($provider)
     {
-        $providerList = ['github', 'facebook', 'instagram', 'twitter', 'linkedin'];
+        $providerList = ['github', 'facebook', 'instagram', 'twitter', 'linkedin', 'telegram'];
         if (!in_array($provider, $providerList)) {
             return;
         }
@@ -187,7 +187,53 @@ class User extends Authenticatable implements MustVerifyEmail
             return $links .'/in/'. $this->{$provider};
         }
 
+        elseif ($provider === 'telegram') {
+            return 'https://t.me/'. $this->{$provider};
+        }
+
         return $links . $this->{$provider};
+    }
+
+    /**
+     * User join an Event
+     * 
+     * @param \App\Models\Event $event
+     * @param string $role
+     * 
+     * @return boolean
+     */
+    public function joinEvent(Event $event, $role = null)
+    {
+        $participateRoles = [
+            Event::PARTICIPANT_ROLE_MEMBER,
+            Event::PARTICIPANT_ROLE_ORGANIZER,
+            Event::PARTICIPANT_ROLE_SPEAKER,
+        ];
+
+        if (!in_array($role, $participateRoles)) {
+            dd('Sorry there is no role for: '. $role);
+        }
+
+        $this->participants()->attach($event->id, [
+            'status' => Event::PARTICIPANT_STATUS_CONFIRM,
+            'role' => $role
+        ]);
+        
+        return true;
+    }
+
+    public function leaveEvent(Event $event)
+    {
+        if (!$this->hasJoined($event)) {
+            return;
+        }
+
+        $this->participants()->detach($event->id);
+    }
+
+    public function hasJoined(Event $event)
+    {
+        return $this->participants->where('pivot.event_id', $event->id)->first();
     }
 
     public function isAdmin()
