@@ -147,17 +147,24 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function scopeFilterable($q)
     {
+        $verification = request('verification');
         $status = request('status');
         $role = request('role');
         $search = request('search');
         return $q->where('role_id', '!=', Role::ADMIN)
             ->when(request()->has('status'), function ($q) use ($status) {
-                if ($status == 'active') {
-                    return $q->where('users.status', $status)->where('is_active', true);
-                } elseif ($status == 'pending') {
-                    return $q->where('users.status', $status)->where('is_active', false);
-                } elseif ($status == 'block') {
-                    return $q->where('users.status', self::STATUS_BLOCK);
+                // if ($status == 'active') {
+                //     return $q->where('users.status', $status)->where('is_active', true);
+                // } elseif ($status == 'pending') {
+                //     return $q->where('users.status', $status)->where('is_active', false);
+                // } elseif ($status == 'block') {
+                //     return $q->where('users.status', self::STATUS_BLOCK);
+                // }
+            })->when($verification, function ($q) use ($verification) {
+                if ($verification == 'verified') {
+                    return $q->whereNotNull('users.email_verified_at');
+                } elseif ($role == 'pending') {
+                    return $q->whereNull('users.email_verified_at');
                 }
             })->when($role, function ($q) use ($role) {
                 if ($role == 'member') {

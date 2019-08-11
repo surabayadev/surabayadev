@@ -45,7 +45,7 @@ trait StatusableTrait
         elseif (User::class == get_class()) {
             switch ($status) {
                 case User::STATUS_NORMAL:
-                    if ($model->is_active) {
+                    if ($model->email_verified_at) {
                         $text = $this->transformStatus('Active', $asHtml, 'badge-success');
                     } else {
                         $text = $this->transformStatus('Pending', $asHtml, 'badge-primary');

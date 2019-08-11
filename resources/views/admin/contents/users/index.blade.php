@@ -22,13 +22,20 @@
     <div class="card-body">
         {!! Form::model(request()->all(), ['method' => 'GET', 'class' => 'form-inline mb-4 justify-content-center']) !!}
             <div class="mr-2">
+                {!! Form::select('verification', [
+                    'all' => 'Verification: All',
+                    'verified' => 'Verification: Verified',
+                    'pending' => 'Verification: Pending',
+                ], null, ['class' => 'form-control']) !!}
+            </div>
+            {{-- <div class="mr-2">
                 {!! Form::select('status', [
                     'all' => 'Status: All',
                     'active' => 'Status: Active',
                     'pending' => 'Status: Pending',
                     'block' => 'Status: Block',
                 ], null, ['class' => 'form-control']) !!}
-            </div>
+            </div> --}}
             <div class="mr-2">
                 {!! Form::select('role', [
                     'all' => 'Role: All',
@@ -51,7 +58,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Status</th>
+                        <th>Verified</th>
                         <th>Register at</th>
                         <th>Action</th>
                     </tr>
@@ -62,7 +69,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Status</th>
+                        <th>Verified</th>
                         <th>Register at</th>
                         <th>Action</th>
                     </tr>
@@ -76,11 +83,18 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>
-                            {{ $u->name }} <b data-toggle="tooltip" title="gender">{!! $u->gender == 'm' ? '&#9794;' : '&#9792;' !!}</b>
+                            {{ $u->name }} <b data-toggle="tooltip" title="{{ $u->gender == 'm' ? 'Male' : 'Female' }}">{!! $u->gender == 'm' ? '&#9794;' : '&#9792;' !!}</b>
                             <br> <small class="text-muted">{{ $u->username }}</small> </td>
                         <td>{{ $u->email }}</td>
                         <td>{{ $u->role->display_name }}</td>
-                        <td>{!! $u->getStatusText($u, true) !!}</td>
+                        {{-- <td>{!! $u->getStatusText($u, true) !!}</td> --}}
+                        <td>
+                            @if ($u->email_verified_at)
+                                <span class="badge badge-success">Verified</span>
+                            @else
+                                <span class="badge badge-secondary">Pending</span>
+                            @endif
+                        </td>
                         <td><span title="{{ date_formatted($u->created_at, false) }}">{{ date_formatted($u->created_at) }}</span></td>
                         <td>
                             <a href="{{ route('admin.user.edit', $u->id) }}" class="btn btn-primary btn-sm">Edit</a>
@@ -98,6 +112,7 @@
         </div>
 
         {!! $users->appends([
+            'verification' => request('verification'),
             'status' => request('status'),
             'role' => request('role'),
             'search' => request('search'),

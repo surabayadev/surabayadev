@@ -10,18 +10,19 @@
 6. [ ] (ADMIN optional) Category Admin CRUD
 7. [ ] (ADMIN optional) Testimony Admin CRUD
 8. [x] (ADMIN) Cleaning up admin page
-9. [ ] (ADMIN) Dashboard!
-10. [x] (PUBLIC) Email Verification
-11. [x] (PUBLIC) Profile & User page
-12. [x] (PUBLIC) Profile Edit
-13. [x] (PUBLIC) Profile change password
-14. [x] (PUBLIC) Join Event
-15. [x] (PUBLIC) Show event to public page (beautify it!)
-16. [ ] Seed all events data (ask teams to provide hashtag unique in each instagram posts)
-17. [ ] Seed Registered User Data from google forms
-18. [x] Assets Optimization
-19. [x] Implement recaptcha in Register, Login page (or any form).
-20. [x] Implement last_login_at logic (in middleware or after login).
+9.  [x] (PUBLIC) Email Verification
+10. [x] (PUBLIC) Profile & User page
+11. [x] (PUBLIC) Profile Edit
+12. [x] (PUBLIC) Profile change password
+13. [x] (PUBLIC) Join Event
+14. [x] (PUBLIC) Show event to public page (beautify it!)
+15. [ ] Seed all events data (ask teams to provide hashtag unique in each instagram posts)
+16. [x] Seed Registered User Data from google forms
+17. [x] Assets Optimization
+18. [x] Implement recaptcha in Register, Login page (or any form).
+19. [x] Implement last_login_at logic (in middleware or after login).
+20. [ ] (ADMIN) Dashboard!
+21. [ ] (ADMIN) Set as Organizer
 
 
 ### Little note

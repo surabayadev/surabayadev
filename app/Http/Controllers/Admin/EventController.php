@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -117,9 +118,13 @@ class EventController extends Controller
             'speakers' => 'required|array'
         ]);
 
+        $request->offsetSet('start_date', Carbon::createFromTimestamp(strtotime($request->get('start_date')))->format('Y-m-d H:i:s'));
+        $request->offsetSet('end_date', Carbon::createFromTimestamp(strtotime($request->get('end_date')))->format('Y-m-d H:i:s'));
+
         $event = $id ? Event::findOrFail($id) : new Event;
         $event->fill($request->all());
         $event->user_id = auth()->user()->id;
+        $event->save();
 
         if (is_array($request->speakers) && !empty($request->speakers)) {
             $speakers = [];
@@ -127,10 +132,6 @@ class EventController extends Controller
                 $speakers[$value] = ['role' => 'speaker', 'status' => 1];
             }
             $event->participants()->sync($speakers);
-        }
-
-        if (!$event->save()) {
-            return false;
         }
 
         return $event;
