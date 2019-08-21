@@ -124,6 +124,11 @@ class EventController extends Controller
         $event = $id ? Event::findOrFail($id) : new Event;
         $event->fill($request->all());
         $event->user_id = auth()->user()->id;
+
+        if ($event->ig_hashtag) {
+            $event->ig_hashtag_status = 'pending';
+        }
+
         $event->save();
 
         if (is_array($request->speakers) && !empty($request->speakers)) {
