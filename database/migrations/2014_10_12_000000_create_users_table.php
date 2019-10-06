@@ -35,6 +35,7 @@ class CreateUsersTable extends Migration
             $table->string('github')->nullable();
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
+            $table->string('instagram_token')->nullable();
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('telegram')->nullable();

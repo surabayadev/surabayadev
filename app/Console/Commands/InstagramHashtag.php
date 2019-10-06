@@ -78,13 +78,13 @@ class InstagramHashtag extends Command
 
                 if ($response->getNumResults() == 0) {
                     // Return success but give log information
-                    Log::info('There is no photo in hashtag: '. $event->ig_hashtag);
+                    Log::info('There is no photo in hashtag: ' . $event->ig_hashtag);
                     $this->saveToDatabase($event, null);
                     return;
                 }
 
                 // \Log::info('numresults: ', [$response->getNumResults()]);
-
+                dd($response->getItems());
                 foreach ($response->getItems() as $key => $item) {
                     if ($item->getUser()->getUsername() == 'surabayadev') {
 
@@ -102,9 +102,7 @@ class InstagramHashtag extends Command
                                 'thumbnail' => $item->getImageVersions2()->getCandidates()[1]->getUrl(),
                             ];
                             $this->saveToDatabase($event, $data);
-                        }
-
-                        elseif (count($item->getCarouselMedia()) > 0) {
+                        } elseif (count($item->getCarouselMedia()) > 0) {
                             $data = [];
                             foreach ($item->getCarouselMedia() as $key => $carousel) {
 
@@ -129,7 +127,7 @@ class InstagramHashtag extends Command
                 // This will be a null value again when we've reached the last page!
                 // And we will stop looping through pages as soon as maxId becomes null.
                 $maxId = $response->getNextMaxId();
-                echo "Sleeping for 7s...". $maxId . PHP_EOL;
+                echo "Sleeping for 7s..." . $maxId . PHP_EOL;
                 sleep(7);
             } while ($maxId !== null);
 
@@ -137,9 +135,8 @@ class InstagramHashtag extends Command
             $event->ig_hashtag_status = 'success';
             $isSuccess = $event->save();
             if ($isSuccess) {
-                Log::info(__CLASS__ .' - Fetch photo success', [$event->id, $event->name]);
+                Log::info(__CLASS__ . ' - Fetch photo success', [$event->id, $event->name]);
             }
-
         } catch (\Exception $e) {
             Log::error(__CLASS__, [$e->getMessage()]);
         }
@@ -152,7 +149,7 @@ class InstagramHashtag extends Command
             foreach ($images as $carouselImg) {
                 $event->photos()->create($carouselImg);
             }
-        } elseif(!empty($images)) {
+        } elseif (!empty($images)) {
             $event->photos()->create($images);
         }
     }
