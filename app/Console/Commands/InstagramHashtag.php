@@ -65,7 +65,12 @@ class InstagramHashtag extends Command
      */
     private function fetchFeedFromIg(): array
     {
-        $token = User::where('email', 'surabayadev@gmail.com')->first()->instagram_token;
+        $user = User::where('email', 'surabayadev@gmail.com')->first();
+
+        if ($user === null || $user->instagram_token === null) {
+            exit(1);
+        }
+        $token = $user->instagram_token;
         $baseUrl = InstagramHashtag::BASE_URL_INSTAGRAM;
         $endpoint = InstagramHashtag::ENPOINT_MEDIA;
         $url = $baseUrl . $endpoint . '/?access_token=' . $token;
@@ -108,6 +113,8 @@ class InstagramHashtag extends Command
         try {
             $images = $this->searchFeedIgByHastag($event->ig_hashtag);
             $this->saveToDatabase($event, $images);
+            $event->ig_hashtag_status = 'success';
+            $event->save();
             $this->info('success');
         } catch (\Exception $e) {
             $this->info('error');
