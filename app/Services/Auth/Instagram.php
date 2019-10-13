@@ -27,7 +27,6 @@ class Instagram implements AuthSocialMedia
         ]);
 
         $response = json_decode($response->getBody()->getContents(), true);
-
         $data = [];
         $data['instagram'] = $response['user']['id'];
         $data['instagram_token'] = $response['access_token'];

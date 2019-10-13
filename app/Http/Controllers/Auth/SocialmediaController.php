@@ -12,7 +12,7 @@ class SocialmediaController extends Controller
     public function callback(string $type)
     {
         $response = SocialMediaFactory::make($type)->redirect();
-
+        dd($response);
         $this->updateDatabase($response);
         return redirect()->back();
     }
