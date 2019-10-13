@@ -13,9 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $theme = resource_path('views/themes/'. config('surabayadev.theme'));
+        $theme = resource_path('views/themes/' . config('surabayadev.theme'));
         $this->loadViewsFrom($theme, 'theme');
-        
+
         $admin = resource_path('views/admin');
         $this->loadViewsFrom($admin, 'admin');
     }

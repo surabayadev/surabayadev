@@ -51,7 +51,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $user = auth()->user();
-        
+
         if ($request->password) {
             $this->validate($request, [
                 'password' => 'required|confirmed|string|min:6',
@@ -71,9 +71,9 @@ class UserController extends Controller
         if ($request->phone[0] == 0) {
             $request->offsetSet('phone', ltrim($request->phone, '0'));
         }
-        
+
         if (!str_contains($request->phone, '+62')) {
-            $request->offsetSet('phone', '+62'. $request->phone);
+            $request->offsetSet('phone', '+62' . $request->phone);
         }
 
         $user->fill($request->all());

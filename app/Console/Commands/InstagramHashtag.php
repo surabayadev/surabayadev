@@ -2,11 +2,14 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use App\Models\Event;
+use GuzzleHttp\Client;
+use InstagramAPI\Instagram;
+use GuzzleHttp\Psr7\Request;
+use InstagramAPI\Signatures;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use InstagramAPI\Instagram;
-use InstagramAPI\Signatures;
 
 class InstagramHashtag extends Command
 {
@@ -23,6 +26,10 @@ class InstagramHashtag extends Command
      * @var string
      */
     protected $description = 'Command description';
+
+    const BASE_URL_INSTAGRAM = 'https://api.instagram.com';
+
+    const ENPOINT_MEDIA = '/v1/users/self/media/recent';
 
     /**
      * Create a new command instance.
@@ -52,95 +59,65 @@ class InstagramHashtag extends Command
         });
     }
 
-    public function getIgPhotosFromHashtag(Event $event)
+    /**
+     * fetch data from instagram api
+     * @return array
+     */
+    private function fetchFeedFromIg(): array
+    {
+        $user = User::where('email', 'surabayadev@gmail.com')->first();
+
+        if ($user === null || $user->instagram_token === null) {
+            exit(1);
+        }
+        $token = $user->instagram_token;
+        $baseUrl = InstagramHashtag::BASE_URL_INSTAGRAM;
+        $endpoint = InstagramHashtag::ENPOINT_MEDIA;
+        $url = $baseUrl . $endpoint . '/?access_token=' . $token;
+
+        $client = new Client();
+        $request = new Request('GET', $url);
+
+        $response = $client->send($request);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    /**
+     * filter instagram data by hashtag
+     *
+     * @param string $hashtag
+     * @return array
+     */
+    private function searchFeedIgByHastag(string $hashtag): array
+    {
+        $datas = $this->fetchFeedFromIg();
+        $response = [];
+
+        foreach ($datas['data'] as $data) {
+            if (in_array(strtolower($hashtag), $data['tags'])) {
+                foreach ($data['carousel_media'] as $media) {
+                    $response[] = [
+                        'source_link' => $data['link'],
+                        'provider' => 'instagram',
+                        'thumbnail' => $media['images']['thumbnail']['url'],
+                        'original' => $media['images']['standard_resolution']['url']
+                    ];
+                }
+            }
+        }
+        return $response;
+    }
+
+    public function getIgPhotosFromHashtag(Event $event): void
     {
         try {
-            $ig = new Instagram($debug = true, $truncatedDebug = false);
-            $ig->login(config('services.instagram.username'), config('services.instagram.password'));
-        } catch (\Exception $e) {
-            Log::error(__CLASS__, [$e->getMessage()]);
-            $this->error('Something went wrong prend: ' . $e->getMessage());
-            return;
-        }
-
-        try {
-            // Generate a random rank token.
-            $rankToken = \InstagramAPI\Signatures::generateUUID();
-            // Starting at "null" means starting at the first page.
-            $maxId = null;
-            $target = 'surabayadev';
-            $page = 0;
-
-            do {
-                // Request the page corresponding to maxId.
-                // Note that we are using the same rank token for all pages.
-                $response = $ig->hashtag->getFeed($event->ig_hashtag, $rankToken, $maxId);
-
-                if ($response->getNumResults() == 0) {
-                    // Return success but give log information
-                    Log::info('There is no photo in hashtag: '. $event->ig_hashtag);
-                    $this->saveToDatabase($event, null);
-                    return;
-                }
-
-                // \Log::info('numresults: ', [$response->getNumResults()]);
-
-                foreach ($response->getItems() as $key => $item) {
-                    if ($item->getUser()->getUsername() == 'surabayadev') {
-
-                        if ($page >= config('surabayadev.ig.limit')) {
-                            break;
-                        }
-                        Log::info('[' . $page . ']', ['https://instagram.com/p/' . $item->getCode()]);
-
-                        // Single post
-                        if ($item->getImageVersions2()) {
-                            $data = [
-                                'provider' => 'instagram',
-                                'source_link' => 'https://instagram.com/p/' . $item->getCode(),
-                                'original' => $item->getImageVersions2()->getCandidates()[0]->getUrl(),
-                                'thumbnail' => $item->getImageVersions2()->getCandidates()[1]->getUrl(),
-                            ];
-                            $this->saveToDatabase($event, $data);
-                        }
-
-                        elseif (count($item->getCarouselMedia()) > 0) {
-                            $data = [];
-                            foreach ($item->getCarouselMedia() as $key => $carousel) {
-
-                                if ($key >= config('surabayadev.ig.limit_carousel')) {
-                                    break;
-                                }
-
-                                array_push($data, [
-                                    'provider' => 'instagram',
-                                    'source_link' => 'https://instagram.com/p/' . $item->getCode(),
-                                    'original' => $carousel->getImageVersions2()->getCandidates()[0]->getUrl(),
-                                    'thumbnail' => $carousel->getImageVersions2()->getCandidates()[1]->getUrl(),
-                                ]);
-                            }
-                            $this->saveToDatabase($event, $data);
-                        }
-                        $page++;
-                    }
-                }
-
-                // Now we must update the maxId variable to the "next page".
-                // This will be a null value again when we've reached the last page!
-                // And we will stop looping through pages as soon as maxId becomes null.
-                $maxId = $response->getNextMaxId();
-                echo "Sleeping for 7s...". $maxId . PHP_EOL;
-                sleep(7);
-            } while ($maxId !== null);
-
-            // update status events as success
+            $images = $this->searchFeedIgByHastag($event->ig_hashtag);
+            $this->saveToDatabase($event, $images);
             $event->ig_hashtag_status = 'success';
-            $isSuccess = $event->save();
-            if ($isSuccess) {
-                Log::info(__CLASS__ .' - Fetch photo success', [$event->id, $event->name]);
-            }
-
+            $event->save();
+            $this->info('success');
         } catch (\Exception $e) {
+            $this->info('error');
             Log::error(__CLASS__, [$e->getMessage()]);
         }
     }
@@ -148,12 +125,6 @@ class InstagramHashtag extends Command
     public function saveToDatabase(Event $event, $images = null)
     {
         // Insert to database
-        if (!empty($images[0])) {
-            foreach ($images as $carouselImg) {
-                $event->photos()->create($carouselImg);
-            }
-        } elseif(!empty($images)) {
-            $event->photos()->create($images);
-        }
+        $event->photos()->createMany($images);
     }
 }

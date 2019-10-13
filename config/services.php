@@ -43,5 +43,8 @@ return [
     'instagram' => [
         'username' => env('SERVICES_IG_USERNAME'),
         'password' => env('SERVICES_IG_PASSWORD'),
+        'client_id' => env('INSTAGRAM_CLIENT_ID'),
+        'secret_id' => env('INSTAGRAM_CLIENT_SECRET'),
+        'redirect_url' => 'http://surabayadev.test/callback/instagram'
     ],
 ];

@@ -20,6 +20,7 @@ Auth::routes(['verify' => true]);
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::middleware(['verified'])->group(function () {
+    Route::get('/callback/{service}', 'Auth\SocialmediaController@callback');
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
     Route::get('/profile', 'UserController@profile')->name('profile');
@@ -32,3 +33,6 @@ Route::middleware(['verified'])->group(function () {
 });
 
 Route::get('/{username}', 'UserController@show')->name('user.show');
+Route::get('/callback', function ($id) {
+    dd('helo world');
+});

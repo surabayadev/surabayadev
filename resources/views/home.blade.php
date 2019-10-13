@@ -54,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md">
                 <div class="card card-close">
                     <img src="{{asset('img/poster-1.png')}}" alt="" srcset="">
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-md">
                 <div class="card card-close">
                     <img src="{{asset('img/poster-1.png')}}" alt="" srcset="">
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-close">
                     <svg class="bd-placeholder-img card-img-bottom" width="100%" height="200"
@@ -120,7 +120,7 @@
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                 </div>
-            
+
                 <div class="card card-close">
                     <svg class="bd-placeholder-img card-img-bottom" width="100%" height="200"
                     xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
@@ -180,7 +180,7 @@
             <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                 <img src="{{theme_asset('css/asset/icon/arrow-right.png')}}" alt="" srcset="">
             </a>
-            
+
         </div>
     </div>
 </section>
@@ -193,7 +193,7 @@
         <h3 class="text-primary">Ayo, gabung ke SurabayaDev</h3>
         <p>Ikuti diskusi dan informasi terbaru seputar acara-acara menarik kami <br>
         di grup Telegram, fanpage Facebook, dan Instagram kami.</p>
-        
+
         <div class="row mt-5">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <a href="" class="btn btn-telegram btn-block">

@@ -28,7 +28,28 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'role_id', 'name', 'email', 'username', 'password', 'is_subscribe', 'status', 'gender', 'job', 'company', 'province', 'city', 'address', 'phone', 'website', 'github', 'facebook', 'instagram', 'twitter', 'linkedin', 'telegram'
+        'role_id',
+        'name',
+        'email',
+        'username',
+        'password',
+        'is_subscribe',
+        'status',
+        'gender',
+        'job',
+        'company',
+        'province',
+        'city',
+        'address',
+        'phone',
+        'website',
+        'github',
+        'facebook',
+        'instagram',
+        'twitter',
+        'linkedin',
+        'telegram',
+        'instagram_token'
     ];
 
     /**
@@ -77,7 +98,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function setPhoneAttribute($value)
     {
         if (!str_contains($value, '+62')) {
-            $value = '+62'. $value;
+            $value = '+62' . $value;
         }
         $this->attributes['phone'] = $value;
     }
@@ -92,7 +113,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $reservedUsername = implode(config('surabayadev.reserved_word'), ',');
         $rules = [
             'name' => 'required|min:2|max:50',
-            'username' => 'required|alpha_dash|min:2|max:40|unique:users|not_in:'. $reservedUsername,
+            'username' => 'required|alpha_dash|min:2|max:40|unique:users|not_in:' . $reservedUsername,
             'email' => 'required|unique:users',
             'password' => 'required|confirmed|string|min:6',
             'phone' => 'required',
@@ -111,7 +132,7 @@ class User extends Authenticatable implements MustVerifyEmail
                 'alpha_dash',
                 'min:2',
                 'max:40',
-                'not_in:'. $reservedUsername,
+                'not_in:' . $reservedUsername,
                 Rule::unique('users')->ignore($ignoreUserId),
             ];
             $rules['password'] = 'string|min:6';
@@ -188,14 +209,12 @@ class User extends Authenticatable implements MustVerifyEmail
             return;
         }
 
-        $links = 'https://'. $provider .'.com/';
+        $links = 'https://' . $provider . '.com/';
 
         if ($provider === 'linkedin') {
-            return $links .'/in/'. $this->{$provider};
-        }
-
-        elseif ($provider === 'telegram') {
-            return 'https://t.me/'. $this->{$provider};
+            return $links . '/in/' . $this->{$provider};
+        } elseif ($provider === 'telegram') {
+            return 'https://t.me/' . $this->{$provider};
         }
 
         return $links . $this->{$provider};
@@ -203,10 +222,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * User join an Event
-     * 
+     *
      * @param \App\Models\Event $event
      * @param string $role
-     * 
+     *
      * @return boolean
      */
     public function joinEvent(Event $event, $role = null)
@@ -218,14 +237,14 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
 
         if (!in_array($role, $participateRoles)) {
-            dd('Sorry there is no role for: '. $role);
+            dd('Sorry there is no role for: ' . $role);
         }
 
         $this->participants()->attach($event->id, [
             'status' => Event::PARTICIPANT_STATUS_CONFIRM,
             'role' => $role
         ]);
-        
+
         return true;
     }
 
