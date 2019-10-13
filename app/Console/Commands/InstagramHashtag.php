@@ -88,9 +88,9 @@ class InstagramHashtag extends Command
         $datas = $this->fetchFeedFromIg();
         $response = [];
 
-        foreach ($datas['data'] as $index => $data) {
+        foreach ($datas['data'] as $data) {
             if (in_array(strtolower($hashtag), $data['tags'])) {
-                foreach ($data['carousel_media'] as $key => $media) {
+                foreach ($data['carousel_media'] as $media) {
                     $response[] = [
                         'source_link' => $data['link'],
                         'provider' => 'instagram',
