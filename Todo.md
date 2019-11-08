@@ -1,5 +1,14 @@
 # TODO
 
+## Important
+
+1. [ ] (BUG) Permission User
+2. [ ] (Improve) Asset Image Size
+3. [ ] (Improve) UI
+4. [ ] Login Social Media: Facebook, Google
+5. [ ] List Participant Event
+6. [ ] Foto Profil User by Social Media (Facebook, Google)
+
 ## Feature
 
 1. [x] Auth Register & Login

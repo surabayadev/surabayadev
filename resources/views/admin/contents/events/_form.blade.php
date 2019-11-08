@@ -31,19 +31,19 @@
 @section('foot')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
+{{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
 <script>
-    // Begin Editor
-    var quill = new Quill('#quill-container', {
-        theme: 'snow'
-    });
+    // // Begin Editor
+    // var quill = new Quill('#quill-container', {
+    //     theme: 'snow'
+    // });
     
-    var form = document.querySelector('form[id="main-form"]');
-    form.onsubmit = function(e) {
-        var editorVal = document.querySelector('#quill-container').children[0].innerHTML
-        document.querySelector('textarea[name=content]').value = editorVal
-    };
-    // End Editor
+    // var form = document.querySelector('form[id="main-form"]');
+    // form.onsubmit = function(e) {
+    //     var editorVal = document.querySelector('#quill-container').children[0].innerHTML
+    //     document.querySelector('textarea[name=content]').value = editorVal
+    // };
+    // // End Editor
 
 
     // Begin Date Range Picker
@@ -160,7 +160,7 @@
     <div class="form-group row">
         {!! Form::label('description', 'Description', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-sm-8">
-            {!! Form::textarea('description', null, ['rows' => 4, 'class' => 'form-control']) !!}
+            {!! Form::textarea('description', null, ['rows' => 7, 'class' => 'form-control']) !!}
         </div>
     </div>
 </div>
@@ -178,7 +178,7 @@
         </div>
     </div>
 </div>
-<div class="card-header py-3">
+{{-- <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold">Content</h6>
 </div>
 <div class="card-body">
@@ -190,7 +190,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold">Photos</h6>
 </div>

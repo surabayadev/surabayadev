@@ -24,9 +24,6 @@
     @include('theme::partials.footer')
 
     <script src="{{ theme_asset('js/app.js') }}"></script>
-    <script>
-        $('body *[data-toggle=tooltip]').tooltip({ boundary: 'window' })
-    </script>
 
     @yield('foot')
 </body>

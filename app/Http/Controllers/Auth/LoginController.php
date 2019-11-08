@@ -22,13 +22,6 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/profile';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -40,6 +33,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
+        session()->put('nextPage', url()->previous());
         $data = [
             'title' => 'Login'
         ];
@@ -60,5 +54,15 @@ class LoginController extends Controller
     protected function loggedOut(Request $request)
     {
         return redirect()->route('login');
+    }
+
+    public function redirectPath()
+    {
+        $next = session('nextPage');
+        if ($next && !str_contains($next, 'email/verify')) {
+            return $next;
+        }
+
+        return route('profile');
     }
 }

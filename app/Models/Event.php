@@ -82,6 +82,13 @@ class Event extends Model
         ];
     }
 
+    public function renderDescription()
+    {
+        $exp = explode(PHP_EOL, $this->description);
+        $imp = '<p>' . implode('</p><p>', $exp) .'</p>';
+        return str_replace(['<p></p>', "<p>\r</p>"], '', $imp);
+    }
+
     public function scopeByPublish($q)
     {
         return $q->where('status', self::STATUS_PUBLISH);

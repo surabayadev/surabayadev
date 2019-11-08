@@ -1,8 +1,14 @@
 @extends('theme::layouts.default')
 
+@section('foot')
+    <script>
+        // $('#home-headline').css();
+    </script>
+@endsection
+
 @section('content')
 <!-- Home Headline Begin -->
-<section id="home-headline" style="background-image: url({{ asset('img/banner2.jpg') }});">
+{{-- <section id="home-headline" style="background-image: url({{ asset('static/img/banner-medium-1.jpeg') }}); transition: background;">
     <div class="container">
         <h2 class="text-light">#SurabayaDev</h2>
         <h4 class="text-light">SurabayaDev adalah komunitas IT yang
@@ -10,7 +16,41 @@
             <br> potensi pegiat IT di Surabaya.
         </h4>
     </div>
-</section>
+</section> --}}
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="4000" data-pause="false">
+    <div class="carousel-inner" style="height: 700px;">
+        <div class="carousel-description" style="position: absolute; top: 200px; left: 200px; z-index: 2;">
+            <div class="container">
+                <h2 class="text-light">#SurabayaDev</h2>
+                <h4 class="text-light">SurabayaDev adalah komunitas IT yang
+                    <br> membantu meningkatkan dan memanfaatkan
+                    <br> potensi pegiat IT di Surabaya.
+                </h4>
+            </div>
+        </div>
+        {{-- <div class="carousel-item active">
+            <img class="d-block w-100" src="{{ asset('static/img/a-banner-medium-1.jpg') }}" alt="First slide">
+        </div> --}}
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="{{ asset('static/img/a-banner-medium-2.jpg') }}" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{ asset('static/img/banner-medium-3-part2.jpg') }}" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{ asset('static/img/a-banner-medium-4.jpg') }}" alt="Fourth slide">
+        </div>
+    </div>
+    <a class="carousel-control-prev d-none" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next d-none" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 <!-- Home Headline End -->
 
 
@@ -33,7 +73,7 @@
         </div>
 
         <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
-            <img src="{{asset('img/speaker-2.png')}}" width="100%" alt="" srcset="">
+            <img src="{{asset('static/img/speaker-2.jpeg')}}" width="100%" alt="" srcset="">
         </div>
     </div>
 </section>
@@ -47,7 +87,7 @@
         <div class="row mt-5">
             <div class="col-md">
                 <div class="card card-close">
-                    <img src="{{asset('img/poster-1.png')}}" alt="" srcset="">
+                    <img src="{{asset('static/img/poster-1.jpeg')}}" alt="Poster Event" srcset="">
                     <div class="card-body">
                         <h5 class="card-title text-primary">Introducing of Vue JS</h5>
                         <p class="card-text">30 November 2018</p>
@@ -57,7 +97,7 @@
 
             <div class="col-md">
                 <div class="card card-close">
-                    <img src="{{asset('img/poster-1.png')}}" alt="" srcset="">
+                    <img src="{{asset('static/img/poster-1.jpeg')}}" alt="Poster Event" srcset="">
                     <div class="card-body">
                         <h5 class="card-title text-primary">Introducing of Vue JS</h5>
                         <p class="card-text">30 November 2018</p>
@@ -67,7 +107,7 @@
 
             <div class="col-md">
                 <div class="card card-close">
-                    <img src="{{asset('img/poster-1.png')}}" alt="" srcset="">
+                    <img src="{{asset('static/img/poster-1.jpeg')}}" alt="Poster Event" srcset="">
                     <div class="card-body">
                         <h5 class="card-title text-primary">Introducing of Vue JS</h5>
                         <p class="card-text">30 November 2018</p>
@@ -225,16 +265,13 @@
         <h3 class="text-primary">Sponsored By</h3>
         <div class="row mt-5">
             <div class="col-md-4">
-                <img src="{{asset('img/sponsor1.png')}}" width="100%" alt="" srcset="">
+                <img src="{{asset('static/img/sponsor1.jpeg')}}" width="100%" alt="" srcset="">
             </div>
             <div class="col-md-4">
-                <img src="{{asset('img/sponsor2.png')}}" width="100%" alt="" srcset="">
+                <img src="{{asset('static/img/sponsor2.jpeg')}}" width="100%" alt="" srcset="">
             </div>
             <div class="col-md-4">
-                <img src="{{asset('img/sponsor3.png')}}" width="100%" alt="" srcset="">
-            </div>
-            <div class="col-md-4">
-                <img src="{{asset('img/sponsor4.png')}}" width="100%" alt="" srcset="">
+                <img src="{{asset('static/img/sponsor3.jpeg')}}" width="100%" alt="" srcset="">
             </div>
         </div>
     </div>

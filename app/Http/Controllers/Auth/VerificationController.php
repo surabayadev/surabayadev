@@ -22,13 +22,6 @@ class VerificationController extends Controller
     use VerifiesEmails;
 
     /**
-     * Where to redirect users after verification.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/edit-profile';
-
-    /**
      * Create a new controller instance.
      *
      * @return void
@@ -48,5 +41,15 @@ class VerificationController extends Controller
         return $request->user()->hasVerifiedEmail()
                         ? redirect($this->redirectPath())
                         : view('theme::contents.verify', $data);
+    }
+
+    public function redirectPath()
+    {
+        $next = session('nextPage');
+        if ($next && !str_contains($next, 'email/verify')) {
+            return $next;
+        }
+
+        return route('profile.edit');
     }
 }

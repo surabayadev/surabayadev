@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->string('city');
             $table->text('address');
             $table->text('description');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->bigInteger('participant_limit')->default(0);
             $table->string('ig_hashtag')->nullable();

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img height="49px" width="132px" src="{{ theme_asset('img/logo-small.png') }}" alt="" srcset="">
+            <img height="49px" width="132px" src="{{ asset('static/img/logo-small.jpeg') }}" alt="" srcset="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

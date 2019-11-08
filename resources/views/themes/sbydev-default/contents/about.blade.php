@@ -1,7 +1,7 @@
 @extends('theme::layouts.default')
 
 @section('content')
-    <div id="headline">
+    <div id="headline" style="background-image: url({{ asset('static/img/team.jpg') }});">
         <div class="container">
             <img src="{{ theme_asset('css/asset/img/sbydev-logo-white.png') }}" alt="" srcset="">
             <a href="#sejarah">
@@ -25,7 +25,7 @@
                     </p>
                 </div>
                 <div class="col-lg-5">
-                    <img src="{{ theme_asset('css/asset/img/blob-img-1.png') }}" alt="" srcset="">
+                    <img src="{{ asset('static/img/blob-img-1.png') }}" alt="" srcset="">
                 </div>
                 <div class="col-lg-1"></div>
             </div>
@@ -33,7 +33,7 @@
             <div class="row" id="sejarah-2">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5">
-                    <img src="{{ theme_asset('css/asset/img/blob-img-2.png') }}" alt="" srcset="">
+                    <img src="{{ asset('static/img/blob-img-2.png') }}" alt="" srcset="">
                 </div>
                 <div class="col-lg-5">
                     <p>
@@ -92,7 +92,7 @@
             <div class="row mt-5" id="seminar">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5">
-                    <img src="{{ theme_asset('css/asset/img/blob-img-3.png') }}" alt="" srcset="">
+                    <img src="{{ asset('static/img/blob-img-5.png') }}" alt="" srcset="">
                 </div>
                 <div class="col-lg-5">
                     <h5>Seminar</h5>
@@ -116,7 +116,7 @@
                     </p>
                 </div>
                 <div class="col-lg-5">
-                    <img src="{{ theme_asset('css/asset/img/blob-img-4.png') }}" alt="" srcset="">
+                    <img src="{{ asset('static/img/blob-img-4.png') }}" alt="" srcset="">
                 </div>
                 <div class="col-lg-1"></div>
             </div>
@@ -125,7 +125,7 @@
             <div class="row mt-5" id="gathering">
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5">
-                    <img src="{{ theme_asset('css/asset/img/blob-img-5.png') }}" alt="" srcset="">
+                    <img src="{{ asset('static/img/blob-img-3.png') }}" alt="" srcset="">
                 </div>
                 <div class="col-lg-5">
                     <h5>Gathering</h5>

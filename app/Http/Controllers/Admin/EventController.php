@@ -112,7 +112,7 @@ class EventController extends Controller
             'city' => 'required',
             'address' => 'required',
             'description' => 'required',
-            'content' => 'required',
+            // 'content' => 'required',
             'start_date' => 'required|before:' . $request->get('end_date'),
             'end_date' => 'required|after:' . $request->get('start_date'),
             'speakers' => 'required|array'

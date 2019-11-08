@@ -9,6 +9,8 @@ require('./bootstrap');
 
 require('./../../utils/link-sangar');
 
+$('body *[data-toggle=tooltip]').tooltip({ boundary: 'window' });
+
 // window.Vue = require('vue');
 
 /**

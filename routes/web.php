@@ -1,11 +1,11 @@
 <?php
 
 
-$phone = 81336643668.0;
 
-
-
-// dd('here', $phone, (integer) $phone);
+Route::get('/coba', function () {
+    $event = App\Models\Event::find(13);
+    return dd($event->participants->where('id', 99)->count());
+});
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('about', 'SiteController@about')->name('site.about');
@@ -35,4 +35,10 @@ Route::middleware(['verified'])->group(function () {
 Route::get('/{username}', 'UserController@show')->name('user.show');
 Route::get('/callback', function ($id) {
     dd('helo world');
+});
+
+Route::get('/static-prend/img/{any}', function ($file) {
+    header('Cache-Control: max-age=84600');
+    $content = file_get_contents(public_path('static/img/'. $file));
+    return response($content)->header('Content-Type', 'image/jp2');
 });
