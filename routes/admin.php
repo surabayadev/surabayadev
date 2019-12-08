@@ -3,7 +3,11 @@
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
 
 Route::get('/', 'DashboardController@index')->name('dashboard');
+
+// Events
+Route::get('/event/participants/{id}', 'EventController@participants')->name('event.participants');
 Route::resource('event', 'EventController');
+// End Events
 
 
 Route::resource('category', 'CategoryController');

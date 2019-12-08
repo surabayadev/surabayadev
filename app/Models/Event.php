@@ -51,6 +51,11 @@ class Event extends Model
         return $this->participants->where('pivot.role', 'speaker');
     }
 
+    public function getOrganizers()
+    {
+        return $this->participants->where('pivot.role', 'organizer');
+    }
+
     public function getMembers()
     {
         return $this->participants->where('pivot.role', 'member');

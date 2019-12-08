@@ -12,4 +12,6 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/sbydev/js/app.js', 'public/themes/sbydev-default/js')
-   // .sass('resources/assets/sbydev/sass/app.scss', 'public/themes/sbydev-default/css');
+   .js('resources/assets/admin/js/admin.js', 'public/admin-assets/js')
+   .sass('resources/assets/admin/sass/admin.scss', 'public/admin-assets/css')
+   // .sass('resources/assets/sbydev/sass/app.scss', 'public/themes/sbydev-default/css')

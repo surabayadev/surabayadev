@@ -24,7 +24,7 @@ if (!function_exists('admin_asset')) {
     function admin_asset($path, $secure = null)
     {
         $path = ($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
-        return asset('admin-assets/' . $path, $secure);
+        return asset('admin-assets' . $path, $secure);
     }
 }
 

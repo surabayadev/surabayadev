@@ -1,3 +1,5 @@
 {
-    "/themes/sbydev-default/js/app.js": "/themes/sbydev-default/js/app.js"
+    "/themes/sbydev-default/js/app.js": "/themes/sbydev-default/js/app.js",
+    "/admin-assets/css/admin.css": "/admin-assets/css/admin.css",
+    "/admin-assets/js/admin.js": "/admin-assets/js/admin.js"
 }

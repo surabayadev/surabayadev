@@ -91,9 +91,9 @@
             <div class="row">
                 <div class="col-md-12">
                     @forelse ($event->getMembers() as $m)
-                        <a href="{{ route('user.show', $m->username) }}" class="d-inline-block mb-3 mx-1" title="{{ $m->name }}" style="width: 100px; height: 100px;">
+                        <a href="{{ route('user.show', $m->username) }}" class="d-inline-block mb-3 mx-1" title="{{ $m->name }}" data-toggle="tooltip" title="{{ $m->name }}" style="width: 100px; height: 100px;">
                             <img src="{{ avatar('akiddcode@gmail.com') }}" class="img-thumbnail rounded-circle">
-                            <span class="d-block overflow-hidden text-nowrap" style="width: 100%; height: 20px;">{{ $m->name }}</span>
+                            <span class="d-block text-truncate text-center" style="width: 100%; height: 20px;">{{ $m->name }}</span>
                         </a>
                     @empty
                         <p class="lead text-muted text-center">Be the first to join this event...</p>

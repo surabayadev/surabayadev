@@ -233,6 +233,7 @@
         @endif
     </div>
 </div>
+
 <div class="card-footer text-center">
     <a href="{{ route('admin.event.index') }}" class="btn btn-secondary mr-3">&laquo; Back</a>
     <button type="submit" class="btn btn-lg btn-primary">Save &raquo;</button>

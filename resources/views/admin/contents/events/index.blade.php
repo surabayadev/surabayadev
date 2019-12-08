@@ -67,16 +67,21 @@
                             {{ $evt->name }}
                         </td>
                         <td>
-                            {{ $evt->participants_count }} (max: {{ $evt->participant_limit }})
+                            {{ $evt->getMembers()->count() }} (max: {{ $evt->participant_limit }})
                         </td>
                         <td>{!! $evt->getStatusText($evt, true) !!}</td>
                         <td>
-                            <span class="badge" title="{{ date_formatted($evt->start_date, false) }}">Start: {{ date_formatted($evt->start_date) }}</span>
-                            <span class="badge" title="{{ date_formatted($evt->end_date, false) }}">End: {{ date_formatted($evt->end_date) }}</span>
+                            <span class="badge" title="{{ date_formatted($evt->start_date, false) }}">
+                                <i class="fa fa-clock text-success"></i> {{ date_formatted($evt->start_date) }}
+                            </span>
+                            <span class="badge" title="{{ date_formatted($evt->end_date, false) }}">
+                                <i class="fa fa-clock text-danger"></i> {{ date_formatted($evt->end_date) }}
+                            </span>
                         </td>
                         <td>
-                            <a href="{{ route('admin.event.edit', $evt->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="{{ route('admin.event.destroy', $evt->id) }}" class="btn btn-danger btn-sm" data-method="delete" data-confirm="Are you sure?">Delete</a>
+                            <a href="{{ route('admin.event.participants', $evt->id) }}" class="btn btn-primary btn-circle btn-sm" data-toggle="tooltip" title="Participants"><i class="fa fa-users"></i></a>
+                            <a href="{{ route('admin.event.edit', $evt->id) }}" class="btn btn-primary btn-circle btn-sm" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-alt"></i></a>
+                            <a href="{{ route('admin.event.destroy', $evt->id) }}" class="btn btn-danger btn-circle btn-sm" data-toggle="tooltip" title="Delete" data-method="DELETE" data-confirm="Are you sure?"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @empty

@@ -39,6 +39,7 @@ class EventController extends Controller
         $data = [
             'title' => 'Create Event',
             'userDropdown' => User::get()->pluck('name', 'id'),
+            'isEdit' => false,
             // 'categoryDropdown' => Category::getDropdown()
         ];
         return view('admin::contents.events.create', $data);
@@ -68,7 +69,22 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        // $event = Event::findOrFail($id);
+        // $data = [
+        //     'title' => 'Detail Event: '. $event->name,
+        //     'event' => $event
+        // ];
+        // return view('admin::contents.events.show', $data);
+    }
+    
+    public function participants($id)
+    {
+        $event = Event::with('participants')->findOrFail($id);
+        $data = [
+            'title' => 'Participants Event: '. $event->name,
+            'event' => $event
+        ];
+        return view('admin::contents.events.participants', $data);
     }
 
     /**
@@ -81,9 +97,10 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         $data = [
-            'title' => 'Edit Event: ' . $event->title,
+            'title' => 'Edit Event: ' . $event->name,
             'userDropdown' => User::get()->pluck('name', 'id'),
             'event' => $event,
+            'isEdit' => true
         ];
         return view('admin::contents.events.edit', $data);
     }
