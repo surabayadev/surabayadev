@@ -14,10 +14,14 @@
         <div class="row">
             <div class="col-md-6">
                 <h1 class="mt-4">{{ $event->name }}</h1>
-                <h4 class="mt-3">{{ $event->created_at->format('l, d F Y') }}</h4>
+                <h4 class="mt-3">
+                    <span class="d-block"><i class="fa fa-clock"></i> Start at: {{ $event->start_date->format('l, d F Y') }}</span>
+                    <span class="d-block"><i class="fa fa-clock"></i> End at: {{ $event->end_date->format('l, d F Y') }}</span>
+                </h4>
                 <h5>at: {{ $event->address . ' '. $event->city }}</h5>
                 <p class="mt-5">
-                    {!! $event->renderDescription() !!}
+                    {{-- {!! $event->renderDescription() !!} --}}
+                    {!! $event->content !!}
                 </p>
 
                 <div class="mt-5">
@@ -65,7 +69,7 @@
                         <div class="d-flex flex-wrap justify-content-center text-center">
                             @forelse ($speakers as $sp)
                                 <a href="{{ route('user.show', $sp->username) }}" class="speaker-photo d-inline-block mb-1 mx-1 text-white text-decoration-none" style="width: 120px;">
-                                    <img src="{{ avatar($sp->email) }}" style="width: 100%;">
+                                    <img src="{{ avatar($sp) }}" style="width: 100%;">
                                     <h5 class="mt-1">{{ $sp->name }}</h5>
                                     <p>{{ $sp->job }}</p>
                                 </a>
@@ -92,7 +96,7 @@
                 <div class="col-md-12">
                     @forelse ($event->getMembers() as $m)
                         <a href="{{ route('user.show', $m->username) }}" class="d-inline-block mb-3 mx-1" title="{{ $m->name }}" data-toggle="tooltip" title="{{ $m->name }}" style="width: 100px; height: 100px;">
-                            <img src="{{ avatar('akiddcode@gmail.com') }}" class="img-thumbnail rounded-circle">
+                            <img src="{{ avatar(App\Models\User::find(8)) }}" class="img-thumbnail rounded-circle">
                             <span class="d-block text-truncate text-center" style="width: 100%; height: 20px;">{{ $m->name }}</span>
                         </a>
                     @empty

@@ -80,6 +80,7 @@ class EventController extends Controller
     public function participants($id)
     {
         $event = Event::with('participants')->findOrFail($id);
+        // return $event->getMembers();
         $data = [
             'title' => 'Participants Event: '. $event->name,
             'event' => $event

@@ -6,7 +6,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Gravatar Photo</label>
             <div class="col-sm-9">
-                <img src="{{ avatar($user->email) }}" alt="">
+                <img src="{{ avatar($user) }}" alt="">
             </div>
         </div>
     @endif
@@ -104,6 +104,12 @@
         {!! Form::label('job', 'Job', ['class' => 'col-sm-2 col-form-label']) !!}
         <div class="col-md-6">
             {!! Form::text('job', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+    <div class="form-group row">
+        {!! Form::label('company', 'Company', ['class' => 'col-sm-2 col-form-label']) !!}
+        <div class="col-md-6">
+            {!! Form::text('company', null, ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>

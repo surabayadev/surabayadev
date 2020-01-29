@@ -15,10 +15,11 @@ class CreateTestimoniesTable extends Migration
     {
         Schema::create('testimonies', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('user_id')->nullable()->index();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('job')->nullable();
+            $table->text('avatar')->nullable();
             $table->text('content');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

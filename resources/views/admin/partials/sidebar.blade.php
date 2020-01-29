@@ -61,12 +61,12 @@
         </a>
     </li>
 
-    <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.category.') ? 'active' : '' }}">
+    {{-- <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.category.') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.category.index') }}">
             <i class="fas fa-fw fa-tag"></i>
             <span>Categories <small class="badge badge-default">(soon)</small></span>
         </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.blog.') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('admin.blog.index') }}">
@@ -75,10 +75,10 @@
         </a>
     </li>
 
-    <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.testimony.') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.testimony.index') }}">
+    <li class="nav-item {{ str_contains(Route::currentRouteName(), 'admin.testimonies.') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('admin.testimonies.index') }}">
             <i class="fas fa-fw fa-comments"></i>
-            <span>Testimonies <small class="badge badge-default">(soon)</small></span>
+            <span>Testimonies</span>
         </a>
     </li>
 

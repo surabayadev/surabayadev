@@ -16,7 +16,7 @@ Route::resource('category', 'CategoryController');
 Route::resource('blog', 'BlogController');
 
 
-Route::get('testimonies', 'TestimonyController@index')->name('testimony.index');
+Route::resource('testimonies', 'TestimonyController');
 
 
 Route::get('user/profile', 'UserController@profile')->name('user.profile');

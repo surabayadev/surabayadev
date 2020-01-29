@@ -4,7 +4,7 @@
 <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
     /* Tell Quill not to scroll */
-    #quill-container {
+    /* #quill-container {
         min-height: 200px;
     }
     
@@ -13,16 +13,28 @@
         overflow-y: visible;
     }
     
-    /* Specify our own scrolling container */
     #scrolling-container {
-        /* padding-bottom: 50px; */
         height: 100%;
         min-height: 100%;
         overflow-y: auto;
+    } */
+
+    .ql-container {
+        overflow: hidden;
+    }
+
+    .ql-container .ql-editor {
+        box-sizing: border-box;
+        font-family: Helvetica, Arial, sans-serif;
+        height: 350px;
+        margin: 0px;
+        position: relative;
+        font-size: 13px;
+        font-size: 16px;
     }
 
     /* For editor content */
-    .ql-editor p {
+    .ql-editor p, .ql-editor ul, .ql-editor ol {
         margin-bottom: 1rem;
     }
 </style>
@@ -31,18 +43,27 @@
 @section('foot')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
-{{-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
+<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
 <script>
     // // Begin Editor
     // var quill = new Quill('#quill-container', {
-    //     theme: 'snow'
+    //     theme: 'snow',
+    //     scrollingContainer: '#scrolling-container'
     // });
+    var snowEditor = new Quill('#snow-container .editor', {
+      bounds: '#snow-container .editor',
+      modules: {
+        // 'syntax': true,
+        'toolbar': '#snow-container .toolbar'
+      },
+      theme: 'snow'
+    });
     
-    // var form = document.querySelector('form[id="main-form"]');
-    // form.onsubmit = function(e) {
-    //     var editorVal = document.querySelector('#quill-container').children[0].innerHTML
-    //     document.querySelector('textarea[name=content]').value = editorVal
-    // };
+    var form = document.querySelector('form[id="main-form"]');
+    form.onsubmit = function(e) {
+        var editorVal = document.querySelector('#snow-container .editor').children[0].innerHTML
+        document.querySelector('textarea[name=content]').value = editorVal
+    };
     // // End Editor
 
 
@@ -145,7 +166,7 @@
             <div>
                 <label class="font-italic">Upload File (comingsoon)</label>
                 <div class="custom-file mb-3">
-                    {!! Form::file('cover', ['class' => 'custom-file-input', 'disabled' => true]) !!}
+                    {!! Form::file('cover', ['id' => 'cover_file', 'class' => 'custom-file-input', 'disabled' => true]) !!}
                     <label class="custom-file-label">Choose file...</label>
                 </div>
             </div>
@@ -178,19 +199,68 @@
         </div>
     </div>
 </div>
-{{-- <div class="card-header py-3">
+<div class="card-header py-3">
     <h6 class="m-0 font-weight-bold">Content</h6>
 </div>
 <div class="card-body">
     <div class="row justify-content-center">
         <div class="col-md-10" style="min-height: 300px;">
             {!! Form::textarea('content', null, ['class' => 'form-control d-none']) !!}
-            <div id="scrolling-container" class="pb-5 pt-2">
+            {{-- <div id="scrolling-container" class="pb-5 pt-2">
                 <div id="quill-container">{!! @$event->content !!}</div>
+            </div> --}}
+            <div class="snow-wrapper">
+                <div id="snow-container">
+                    <div class="toolbar">
+                        <span class="ql-formats">
+                            <select class="ql-header">
+                                <option value="1">Heading</option>
+                                <option value="2">Subheading</option>
+                                <option selected>Normal</option>
+                            </select>
+                            <select class="ql-font">
+                                <option selected>Sailec Light</option>
+                                <option value="sofia">Sofia Pro</option>
+                                <option value="slabo">Slabo 27px</option>
+                                <option value="roboto">Roboto Slab</option>
+                                <option value="inconsolata">Inconsolata</option>
+                                <option value="ubuntu">Ubuntu Mono</option>
+                            </select>
+                        </span>
+                        <span class="ql-formats">
+                            <button class="ql-bold"></button>
+                            <button class="ql-italic"></button>
+                            <button class="ql-underline"></button>
+                        </span>
+                        <span class="ql-formats">
+                            <button class="ql-list" value="ordered"></button>
+                            <button class="ql-list" value="bullet"></button>
+                            <select class="ql-align">
+                                <option label="left" selected></option>
+                                <option label="center" value="center"></option>
+                                <option label="right" value="right"></option>
+                                <option label="justify" value="justify"></option>
+                            </select>
+                        </span>
+                        <span class="ql-formats">
+                            <button class="ql-link"></button>
+                            <button class="ql-image"></button>
+                            <button class="ql-video"></button>
+                        </span>
+                        <span class="ql-formats">
+                            <button class="ql-formula"></button>
+                            <button class="ql-code-block"></button>
+                        </span>
+                        <span class="ql-formats">
+                            <button class="ql-clean"></button>
+                        </span>
+                    </div>
+                    <div class="editor">{!! @$event->content !!}</div>
+                </div>
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold">Photos</h6>
 </div>

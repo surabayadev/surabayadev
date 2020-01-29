@@ -37,12 +37,13 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(Testimony::class, function (Faker $faker) {
     $isRegisteredUser = rand(0, 1);
     return [
-        'user_id' => !$isRegisteredUser ? 0 : function () {
+        'user_id' => !$isRegisteredUser ? null : function () {
             return optional(User::inRandomOrder()->first())->id;
         },
         'name' => $isRegisteredUser ? null : $faker->name,
         'email' => $isRegisteredUser ? null : $faker->email,
         'job' => $isRegisteredUser ? null : $faker->jobTitle,
+        'avatar' => $faker->imageUrl($width = 300, $height = 300),
         'content' => $faker->paragraph,
         'status' => $faker->randomElement([Testimony::STATUS_PUBLISH, Testimony::STATUS_HIDE]),
     ];

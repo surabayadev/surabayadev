@@ -83,8 +83,12 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>
-                            {{ $u->name }} <b data-toggle="tooltip" title="{{ $u->gender == 'm' ? 'Male' : 'Female' }}">{!! $u->gender == 'm' ? '&#9794;' : '&#9792;' !!}</b>
-                            <br> <small class="text-muted">{{ $u->username }}</small> </td>
+                            <a href="{{ route('admin.user.edit', $u->id) }}" class="text-decoration-none">
+                                {{ $u->name }}
+                                <b data-toggle="tooltip" title="{{ $u->gender == 'm' ? 'Male' : 'Female' }}">{!! $u->gender == 'm' ? '&#9794;' : '&#9792;' !!}</b>
+                            </a>
+                            <small class="d-block text-muted">{{ $u->username }}</small>
+                        </td>
                         <td>{{ $u->email }}</td>
                         <td>{{ $u->role->display_name }}</td>
                         {{-- <td>{!! $u->getStatusText($u, true) !!}</td> --}}
