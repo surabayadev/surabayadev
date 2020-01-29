@@ -4,7 +4,7 @@
     <section id="upcoming" class="bg-gradient-1" style="padding: 40px 0px;">
         <div class="container text-center">
             <div class="speaker-photo">
-                <img src="{{ avatar($user->email) }}" style="width: 200px;">
+                <img src="{{ avatar($user) }}" style="width: 200px;">
             </div>
             <h1 class="mt-0">
                 {{ $user->name }}

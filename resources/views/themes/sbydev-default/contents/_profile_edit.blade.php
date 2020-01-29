@@ -131,6 +131,7 @@
                                 {!! Form::text('github', null, ['class' => 'form-control', 'placeholder' =>
                                 'sobirin-rodriguez']) !!}
                             </div>
+                            {{-- <a href="{{ $user->transformSocialLink('github') }}" target="blank" class="text-primary">{{ $user->transformSocialLink('github') }}</a> --}}
                         </div>
                     </div>
                     <div class="form-group row">

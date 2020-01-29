@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Role;
 use App\Models\Event;
 use App\Models\Category;
+use App\Models\UserSocial;
 use Illuminate\Validation\Rule;
 use App\Models\Traits\StatusableTrait;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
     const STATUS_NORMAL = 0;
     const STATUS_PRIVATE = 1;
     const STATUS_BLOCK = 2;
+
+    protected $with = ['role', 'socials'];
 
     /**
      * The attributes that are mass assignable.
@@ -65,14 +68,19 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         parent::boot();
 
-        static::addGlobalScope('role', function (Builder $builder) {
-            $builder->with('role');
-        });
+        // static::addGlobalScope('role', function (Builder $builder) {
+        //     $builder->with('role');
+        // });
     }
 
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function socials()
+    {
+        return $this->hasMany(UserSocial::class);
     }
 
     public function events()
@@ -200,6 +208,11 @@ class User extends Authenticatable implements MustVerifyEmail
                         ->orWhere('email', 'LIKE', "%{$search}%");
                 });
             });
+    }
+
+    public function hasSocial($provider)
+    {
+        return $this->socials->firstWhere('provider', $provider);
     }
 
     public function transformSocialLink($provider)

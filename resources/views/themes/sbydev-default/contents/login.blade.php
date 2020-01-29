@@ -30,6 +30,19 @@
                     <button type="submit" class="btn btn-primary mt-4">Login</button>
                     
                     <div class="d-flex mt-3">
+                        <hr align="left" width="30%"> <span>Gunakan Social Media</span>
+                        <hr align="right" width="30%">
+                    </div>
+
+                    <div class="text-center my-3">
+                        <a href="{{ route('login.social', 'github') }}" class="btn btn-primary"><i class="fab fa-github"></i> Github</a>
+                    </div>
+
+                    <div class="text-center my-3">
+                        <a href="{{ route('login.social', 'facebook') }}" class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</a>
+                    </div>
+
+                    <div class="d-flex mt-3">
                         <hr align="left" width="30%"> <span>Atau</span>
                         <hr align="right" width="30%">
                     </div>

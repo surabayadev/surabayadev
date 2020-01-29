@@ -16,6 +16,23 @@
                 <div class="col-12 col-md-6 mt-4">
                     <div class="card-closed m-auto" id="register-card">
                         {!! Form::open(['method' => 'POST', 'url' => '/register']) !!}
+                            <div class="d-flex">
+                                <hr align="left" width="30%">
+                                <span>Gunakan Social Media</span>
+                                <hr align="right" width="30%">
+                            </div>
+
+                            <div class="text-center my-3">
+                                <a href="{{ route('login.social', 'github') }}" class="btn btn-primary mx-3"><i class="fab fa-github"></i> Github</a>
+        
+                                <a href="{{ route('login.social', 'facebook') }}" class="btn btn-primary mx-3"><i class="fab fa-facebook"></i> Facebook</a>
+                            </div>
+
+                            <div class="d-flex mt-3">
+                                <hr align="left" width="50%">
+                                <hr align="right" width="50%">
+                            </div>
+
                             <div class="form-group">
                                 {!! Form::label('name', 'Nama Lengkap') !!}
                                 {!! Form::text('name', null, [ 'class' => 'form-control '. ($errors->first('name') ? 'is-invalid' : ''), 'placeholder' => 'ex: Sobirin Rodriguez']) !!}
@@ -49,10 +66,10 @@
                                     <div class="invalid-feedback">{{ $errors->first('password') }}</div>
                                 @endif
                             </div>
-                            <div class="form-group text-center mt-5">
+                            <div class="form-group text-center mt-4">
                                 {!! htmlFormSnippet() !!}
                             </div>
-                            <button type="submit" class="btn btn-primary mt-3">Register</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
                         {!! Form::close() !!}
                     </div>
                 </div>

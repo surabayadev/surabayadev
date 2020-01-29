@@ -54,10 +54,35 @@
                 </tr>
             </table>
 
+
             <p>&nbsp;</p>
+            <h2 class="mb-5">Linked Accounts</h2>
+            <table class="table">
+                <tr>
+                    <th><i class="fab fa-github"></i> Github</th>
+                    <td>
+                        @if ($github = $user->hasSocial('github'))
+                            <span class="text-success"><i class="fas fa-check"></i> Connected</span>
+                        @else
+                            <a href="{{ route('login.social', 'github') }}" class="btn btn-sm btn-secondary"><i class="fas fa-plug"></i> Connect</a>
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <th><i class="fab fa-facebook"></i> Facebook</th>
+                    <td>
+                        @if ($fb = $user->hasSocial('facebook'))
+                            <span class="text-success"><i class="fas fa-check"></i> Connected</span>
+                        @else
+                            <a href="{{ route('login.social', 'facebook') }}" class="btn btn-sm btn-secondary"><i class="fas fa-plug"></i> Connect</a>
+                        @endif
+                    </td>
+                </tr>
+            </table>
 
+            
+            <p>&nbsp;</p>
             <h2 class="mb-5">Activities</h2>
-
             <p class="lead text-muted">Coming Soon...</p>
         </div>
     </div>

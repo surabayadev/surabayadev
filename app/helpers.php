@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+
 if (!function_exists('theme_asset')) {
     /**
      * Generate an active theme asset path for the application.
@@ -58,12 +60,16 @@ if (!function_exists('avatar')) {
     /**
      * Get user avatar by email
      *
-     * @param  string  $email
+     * @param  string  App\Models\User
      * @return string
      */
-    function avatar($email, $size = '180')
+    function avatar(User $user, $size = '180')
     {
-        return 'http://www.gravatar.com/avatar/'. md5($email) .'?s='. $size;
+        if ($user->socials->first()) {
+            return $user->socials->first()->avatar;
+        }
+
+        return 'http://www.gravatar.com/avatar/'. md5($user->email) .'?s='. $size;
     }
 }
 

@@ -1,5 +1,7 @@
 <?php
 
+use Laravel\Socialite\Facades\Socialite;
+
 
 
 Route::get('/coba', function () {
@@ -18,6 +20,9 @@ Route::get('event/{slug}', 'EventController@show')->name('event.show');
 // Auth::routes();
 Auth::routes(['verify' => true]);
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('connect/{social}', 'Auth\LoginSocialController@redirectToProvider')->name('login.social');
+Route::get('connect/{social}/callback', 'Auth\LoginSocialController@handleProviderCallback')->name('login.social.callback');
 
 Route::middleware(['verified'])->group(function () {
     Route::get('/callback/{service}', 'Auth\SocialmediaController@callback');
