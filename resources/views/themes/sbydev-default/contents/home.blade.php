@@ -18,7 +18,7 @@
     </div>
 </section> --}}
 
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="4000" data-pause="false">
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000" data-pause="false">
     <div class="carousel-inner" style="height: 700px;">
         <div class="carousel-description" style="position: absolute; top: 200px; left: 200px; z-index: 2;">
             <div class="container">
@@ -188,31 +188,26 @@
 <!-- Testimoni Begin -->
 <section id="home-testimoni">
     <div class="container">
-        <h3 class="text-primary">Apa kata mereka ?</h3>
+        <h3 class="text-primary">Apa kata mereka?</h3>
     </div>
     <div id="carouselExampleControls" class="mt-5 d-flex carousel slide" data-ride="carousel">
         <div class="carousel-inner ">
             <div class="w-75 mr-auto ml-auto">
-                @for ($i = 0; $i < 3; $i++)
-                    <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
-                        <div class="card d-flex card-close">
+                @foreach ($testimonies as $keyTesti => $testi)
+                    <div class="carousel-item {{ $keyTesti == 0 ? 'active' : '' }}">
+                        <div class="card d-flex card-close m-0" style="min-height: 400px;">
                             <div class="card-body text-center mr-auto ml-auto w-75 pl-5 pr-5">
-                                <img src="{{asset('img/burisma.png')}}" class="mb-5 mt-5" height="100%" alt="">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-                                    rhoncus ante a ornare dictum. Cras ultrices urna vel purus lobortis
-                                    sagittis. Pellentesque nibh eros, mattis id condimentum id, egestas
-                                    ac eros. Phasellus id ornare dui. Pellentesque posuere eleifend
-                                    iaculis. Vestibulum eleifend turpis a tempor egestas.
-                                </p>
-                                <br>
-                                <h4>
-                                    <b>Tri Rismaharini </b>, Walikota Surabaya
-                                </h4>
+                                <a href="">
+                                    <img src="{{ $testi->avatar }}" class="my-3 rounded-circle" height="100%">
+                                </a>
+                                
+                                <p>{{ $testi->content }}</p>
+
+                                <h4><b>{{ $testi->name }} </b>, {{ $testi->job }}</h4>
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <img src="{{theme_asset('css/asset/icon/arrow-left.png')}}" alt="" srcset="">
@@ -236,19 +231,19 @@
 
         <div class="row mt-5">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <a href="" class="btn btn-telegram btn-block">
+                <a href="https://t.me/surabayadev" target="_blank" class="btn btn-telegram btn-block">
                     <img src="{{theme_asset('css/asset/icon/telegram.svg')}}" class="mr-3" alt="" srcset="">
                     Telegram
                 </a>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <a href="" class="btn btn-facebook btn-block">
+                <a href="https://www.facebook.com/surabayadev" target="_blank" class="btn btn-facebook btn-block">
                     <img src="{{theme_asset('css/asset/icon/facebook.svg')}}" class="mr-3" alt="" srcset="">
                     Facebook
                 </a>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <a href="" class="btn btn-instagram btn-block">
+                <a href="https://instagram.com/surabayadev" target="_blank" class="btn btn-instagram btn-block">
                     <img src="{{theme_asset('css/asset/icon/instagram.svg')}}" class="mr-3" alt="" srcset="">
                     Instagram
                 </a>
@@ -265,13 +260,13 @@
         <h3 class="text-primary">Sponsored By</h3>
         <div class="row mt-5">
             <div class="col-md-4">
-                <img src="{{asset('static/img/sponsor1.jpeg')}}" width="100%" alt="" srcset="">
+                <img src="{{asset('static/img/sponsor1.jpeg')}}" style="height: 105px;" alt="" srcset="">
             </div>
             <div class="col-md-4">
-                <img src="{{asset('static/img/sponsor2.jpeg')}}" width="100%" alt="" srcset="">
+                <img src="{{asset('static/img/sponsor2.jpeg')}}" style="height: 105px;" alt="" srcset="">
             </div>
             <div class="col-md-4">
-                <img src="{{asset('static/img/sponsor3.jpeg')}}" width="100%" alt="" srcset="">
+                <img src="{{asset('static/img/sponsor3.jpeg')}}" style="height: 105px;" alt="" srcset="">
             </div>
         </div>
     </div>

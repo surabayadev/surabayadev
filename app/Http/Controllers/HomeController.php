@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testimony;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,9 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $testimonies = Testimony::where('status', 1)->latest()->limit(3)->get();
         $data = [
             'title' => 'Home',
+            'testimonies' => $testimonies
         ];
-        return view('home', $data);
+        return view('theme::contents.home', $data);
     }
 }
