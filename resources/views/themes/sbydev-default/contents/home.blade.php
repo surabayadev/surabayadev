@@ -33,13 +33,13 @@
             <img class="d-block w-100" src="{{ asset('static/img/a-banner-medium-1.jpg') }}" alt="First slide">
         </div> --}}
         <div class="carousel-item active">
-            <img class="d-block w-100" src="{{ asset('static/img/a-banner-medium-2.jpg') }}" alt="Second slide">
+            <img class="d-block w-100" src="{{ asset('static/img/banner-medium-2.jpg') }}" alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('static/img/banner-medium-3-part2.jpg') }}" alt="Third slide">
+            <img class="d-block w-100" src="{{ asset('static/img/banner-medium-3.jpg') }}" alt="Third slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{ asset('static/img/a-banner-medium-4.jpg') }}" alt="Fourth slide">
+            <img class="d-block w-100" src="{{ asset('static/img/banner-medium-4.jpg') }}" alt="Fourth slide">
         </div>
     </div>
     <a class="carousel-control-prev d-none" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -85,39 +85,27 @@
     <div class="container">
         <h3 class="text-primary">Event</h3>
         <div class="row mt-5">
-            <div class="col-md">
-                <div class="card card-close">
-                    <img src="{{asset('static/img/poster-1.jpeg')}}" alt="Poster Event" srcset="">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Introducing of Vue JS</h5>
-                        <p class="card-text">30 November 2018</p>
-                    </div>
-                </div>
-            </div>
+
+            @forelse ($pastEvents as $pe)
 
             <div class="col-md">
                 <div class="card card-close">
                     <img src="{{asset('static/img/poster-1.jpeg')}}" alt="Poster Event" srcset="">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Introducing of Vue JS</h5>
-                        <p class="card-text">30 November 2018</p>
+                        <h5 class="card-title text-primary">{{ $pe->name }}</h5>
+                        <p class="card-text">{{ date_formatted($pe->start_date, false) }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md">
-                <div class="card card-close">
-                    <img src="{{asset('static/img/poster-1.jpeg')}}" alt="Poster Event" srcset="">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Introducing of Vue JS</h5>
-                        <p class="card-text">30 November 2018</p>
-                    </div>
-                </div>
-            </div>
+            @empty
+                <p class="lead text-center text-muted">No Events yet</p>
+            @endforelse
+
         </div>
         <div class="d-flex">
             <div class="mr-auto ml-auto">
-                <a href="./event.html" class="btn btn-outline-primary">Lihat Lainnya</a>
+                <a href="{{ route('event.index') }}" class="btn btn-outline-primary">Lihat Lainnya</a>
             </div>
         </div>
     </div>

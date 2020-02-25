@@ -94,6 +94,16 @@ class Event extends Model
         return str_replace(['<p></p>', "<p>\r</p>"], '', $imp);
     }
 
+    public function scopeByUpcoming($q)
+    {
+        return $q->byPublish()->where('end_date', '>', now());
+    }
+
+    public function scopeByPast($q, $limit = 3)
+    {
+        return $q->byPublish()->where('start_date', '<', now())->limit($limit)->latest('start_date');
+    }
+
     public function scopeByPublish($q)
     {
         return $q->where('status', self::STATUS_PUBLISH);

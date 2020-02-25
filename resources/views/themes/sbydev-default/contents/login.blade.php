@@ -8,7 +8,8 @@
             <!-- Login Card Begin -->
             <div class="card-close mt-5" id="login-card">
                 {!! Form::open(['method' => 'POST', 'url' => route('login')]) !!}
-                    <div class="form-group">
+                    
+                    {{-- <div class="form-group">
                         {!! Form::label('email', 'Alamat Email') !!}
                         {!! Form::email('email', null, ['class' => 'form-control '. ($errors->first('email') ? 'is-invalid' : ''), 'placeholder' => 'ex: sobirin@surabayadev.org', 'autofocus' => true]) !!}
                         @if ($errors->first('email'))
@@ -27,27 +28,24 @@
                         </span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-4">Login</button>
+                    <button type="submit" class="btn btn-primary mt-4">Login</button> --}}
                     
-                    <div class="d-flex mt-3">
+                    {{-- <div class="d-flex mt-3">
                         <hr align="left" width="30%"> <span>Gunakan Social Media</span>
                         <hr align="right" width="30%">
-                    </div>
+                    </div> --}}
 
                     <div class="text-center my-3">
-                        <a href="{{ route('login.social', 'github') }}" class="btn btn-primary"><i class="fab fa-github"></i> Github</a>
+                        <a href="{{ route('login.social', 'github') }}" class="btn btn-primary mx-1"><i class="fab fa-github"></i> Github</a>
+                        <a href="{{ route('login.social', 'facebook') }}" class="btn btn-primary mx-1"><i class="fab fa-facebook"></i> Facebook</a>
                     </div>
 
-                    <div class="text-center my-3">
-                        <a href="{{ route('login.social', 'facebook') }}" class="btn btn-primary"><i class="fab fa-facebook"></i> Facebook</a>
-                    </div>
-
-                    <div class="d-flex mt-3">
+                    {{-- <div class="d-flex mt-3">
                         <hr align="left" width="30%"> <span>Atau</span>
                         <hr align="right" width="30%">
                     </div>
 
-                    <a href="{{ route('register') }}" class="btn btn-secondary btn-block mt-2">Daftar Akun Baru</a>
+                    <a href="{{ route('register') }}" class="btn btn-secondary btn-block mt-2">Daftar Akun Baru</a> --}}
                 {!! Form::close() !!}
             </div>
             <!-- Login Card End -->

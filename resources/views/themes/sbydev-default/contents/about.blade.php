@@ -139,28 +139,28 @@
         <!-- Program Kegiatan End -->
 
         <!-- Tim Kami Begin -->
-        <section class="container" id="timkami">
+        {{-- <section class="container" id="timkami">
             <h3 class="text-center text-primary">Tim Kami</h3>
             <div class="row">
                 <div class="col-md-4">
                     <img src="{{ theme_asset('css/asset/img/dummy-img.png') }}" alt="" srcset="">
-                    <h5>Arryangga Aliev P.</h5>
+                    <h5>John Doe</h5>
                     <p>Initiator</p>
                 </div>
                 <div class="col-md-4">
                     <img src="{{ theme_asset('css/asset/img/dummy-img.png') }}" alt="" srcset="">
-                    <h5>Antoni Putra</h5>
+                    <h5>John Doe</h5>
                     <p>Initiator</p>
                 </div>
                 <div class="col-md-4">
                     <img src="{{ theme_asset('css/asset/img/dummy-img.png') }}" alt="" srcset="">
-                    <h5>Ahmad Fatoni</h5>
+                    <h5>John Doe</h5>
                     <p>Initiator</p>
                 </div>
             </div>
 
             <button class="btn btn-primary">Lihat Semua Tim</button>
-        </section>
+        </section> --}}
         <!-- Tim Kami End -->
     </div>
 @stop

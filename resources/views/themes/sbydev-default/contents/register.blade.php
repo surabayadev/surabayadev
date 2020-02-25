@@ -29,8 +29,9 @@
                             </div>
 
                             <div class="d-flex mt-3">
-                                <hr align="left" width="50%">
-                                <hr align="right" width="50%">
+                                <hr align="left" width="30%">
+                                <span>Atau Daftar Langsung</span>
+                                <hr align="right" width="30%">
                             </div>
 
                             <div class="form-group">

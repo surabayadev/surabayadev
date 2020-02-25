@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a href="{{ route('home') }}" target="_blank" class="sidebar-brand d-flex align-items-center justify-content-center">
         <div class="sidebar-brand-icon">
-            <img src="http://surabayadev.test/themes/sbydev-default/img/logo-light.svg" style="width: 100%;">
+            <img src="{{asset('static/img/logo-light.svg')}}" style="width: 100%;">
         </div>
     </a>
 

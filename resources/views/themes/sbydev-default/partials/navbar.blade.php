@@ -28,8 +28,11 @@
                         </div>
                     </li>
                 @else
-                <a href="{{ route('register') }}" class="btn btn-outline-primary mx-2">Join With Us</a>
-                <a href="{{ route('login') }}" class="btn btn-outline-primary mx-2">Login</a>
+                
+                {{-- <a href="{{ route('register') }}" class="btn btn-outline-primary mx-2">Join With Us</a>
+                <a href="{{ route('login') }}" class="btn btn-outline-primary mx-2">Login</a> --}}
+                
+                <a href="{{ route('login') }}" class="btn btn-outline-primary mx-2">Join With Us</a>
                 @endif
             </ul>
         </div>

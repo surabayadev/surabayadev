@@ -166,7 +166,7 @@
             </div>
             <div class="card-body">
                 <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="https://scontent-sin2-1.cdninstagram.com/vp/618c7161037f313d24a8ec77539d1a1f/5D339664/t51.2885-15/sh0.08/e35/s640x640/54247537_306768846660512_707140788838600121_n.jpg?_nc_ht=scontent-sin2-1.cdninstagram.com&_nc_cat=108" alt="">
+                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{ asset('static/img/dummy-event.jpg') }}">
                 </div>
                 <h5>Vue.js Workshop 2019</h5>
                 <p>Ayo rek meluo acara e SurabayaDev. Kali iki, Acara e mbahas soal Vue.Js. Wes ngerti Vue.Js opo durung rek? Opo seh Vue.Js iku? Vue.Js iku semacem gudang e kata Javascript, seng digae mbangun tampilan awal e suatu website seng interaktif. Lah,daripada penasaran kan. Ayo rek meluo acara iki,ben lebih paham opo iku Vue.Js.</p>
